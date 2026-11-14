@@ -1,0 +1,39 @@
+# ChurnIQ - Core Dependencies
+# Compatible with Python 3.10 - 3.12
+
+# Data Manipulation & Serialization
+numpy==1.26.4
+pandas==2.3.3
+pyarrow==17.0.0
+joblib==1.4.2
+
+# Machine Learning & Deep Learning
+scikit-learn==1.5.2
+keras==3.15.1
+torch==2.15.0
+# NOTE: PyTorch CPU (Windows AMD64, Python 3.12) must be installed with:
+#   pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+# TensorFlow 2.17.1 is installed but its C extensions are blocked by
+# Windows Smart App Control on this machine. The project uses
+# Keras 3 with the PyTorch backend (KERAS_BACKEND=torch) instead.
+# To set permanently: add ~/.keras/keras.json with {"backend": "torch"}
+tensorflow==2.17.1
+
+# Visualization & Reporting
+matplotlib==3.9.4
+seaborn==0.13.2
+plotly==5.24.1
+
+# Explainable AI (XAI)
+shap==0.46.0
+
+# Interactive Dashboard
+streamlit==1.39.1
+
+# Interactive Notebook Development
+jupyter==1.1.1
+
+# Automated Testing
+pytest==9.2.0
+pytest-cov==7.1.0
+

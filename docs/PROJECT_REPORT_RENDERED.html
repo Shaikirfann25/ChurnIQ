@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PROJECT_REPORT</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@page {
+  size: A4 portrait;
+  margin: 14mm 13mm 14mm 13mm;
+  @bottom-right {
+    content: counter(page);
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+  background: #ffffff;
+  font-size: 9.5pt;
+  line-height: 1.48;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Page Break Management */
+.page-break {
+  page-break-before: always;
+}
+
+h1 {
+  color: #0f172a;
+  font-size: 15pt;
+  font-weight: 700;
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 4px;
+  margin-top: 24pt;
+  margin-bottom: 10pt;
+  page-break-before: always;
+}
+
+/* Prevent first H1 from breaking page */
+h1:first-of-type, body > h1:nth-of-type(1) {
+  page-break-before: avoid !important;
+  margin-top: 0;
+}
+
+h2 {
+  color: #1e3a8a;
+  font-size: 12.5pt;
+  font-weight: 600;
+  margin-top: 16pt;
+  margin-bottom: 4.5pt;
+  page-break-after: avoid;
+}
+
+h3 {
+  color: #1e40af;
+  font-size: 11pt;
+  font-weight: 600;
+  margin-top: 12pt;
+  margin-bottom: 6pt;
+  page-break-after: avoid;
+}
+
+h4 {
+  color: #334155;
+  font-size: 10pt;
+  font-weight: 600;
+  margin-top: 10pt;
+  margin-bottom: 4pt;
+  page-break-after: avoid;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 4.5pt;
+  text-align: justify;
+}
+
+/* Title Block Styling */
+.title-block {
+  text-align: center;
+  border: 1.5px solid #2563eb;
+  background: #f8fafc;
+  padding: 16pt 18pt;
+  border-radius: 6px;
+  margin-bottom: 18pt;
+  page-break-inside: avoid;
+}
+
+.title-block h1 {
+  border-bottom: none;
+  color: #1e3a8a;
+  font-size: 18pt;
+  margin: 0 0 6pt 0;
+  padding: 0;
+}
+
+.title-block h2 {
+  color: #475569;
+  font-size: 12pt;
+  font-weight: 500;
+  margin: 0 0 12pt 0;
+}
+
+.meta-table {
+  width: 100%;
+  margin: 10pt auto 0 auto;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+
+.meta-table td {
+  padding: 3pt 6pt;
+  border: none;
+}
+
+.meta-table td.label {
+  font-weight: 600;
+  color: #1e3a8a;
+  width: 25%;
+  text-align: right;
+}
+
+.meta-table td.value {
+  color: #0f172a;
+  text-align: left;
+}
+
+/* Executive Abstract Box */
+.abstract-box {
+  background: #f1f5f9;
+  border-left: 4px solid #2563eb;
+  padding: 10pt 14pt;
+  margin: 14pt 0;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+
+.abstract-box h3 {
+  margin-top: 0;
+  color: #1e3a8a;
+  font-size: 10.5pt;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10pt 0 14pt 0;
+  font-size: 8pt;
+  line-height: 1.35;
+  page-break-inside: avoid;
+}
+
+th, td {
+  padding: 4.5pt 5.5pt;
+  border: 1px solid #cbd5e1;
+  text-align: left;
+}
+
+th {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-weight: 600;
+  border-bottom: 2px solid #94a3b8;
+}
+
+tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+/* Code & Preformatted Blocks */
+pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 8pt 10pt;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 7.5pt;
+  line-height: 1.35;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 8pt 0 12pt 0;
+  page-break-inside: avoid;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 8.5pt;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 1pt 3pt;
+  border-radius: 3px;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* Figures and Images */
+figure, .figure-container {
+  display: block;
+  text-align: center;
+  margin: 8pt auto;
+  page-break-inside: avoid;
+}
+
+img {
+  display: block;
+  max-width: 88%;
+  max-height: 195px;
+  margin: 0 auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+
+/* Figure 2 (ROC & PR Curves) on Page 14: Enlarge to reduce blank space */
+img[src*="roc_pr_curves_test.png"] {
+  max-width: 94%;
+  max-height: 240px;
+}
+
+/* Figure 3 (Confusion Matrices) on Page 15: Enlarge using available vertical space */
+img[src*="confusion_matrices_test.png"] {
+  max-width: 96%;
+  max-height: 305px;
+}
+
+/* Figures 4 & 5 (SHAP Feature Importance) on Page 16: Balanced height so both and text fit on single page */
+img[src*="shap_importance_mlp.png"],
+img[src*="shap_importance_logistic.png"] {
+  max-width: 90%;
+  max-height: 146px;
+}
+
+/* Figures 6 & 7 (SHAP Summary Beeswarm) on Page 17: Enlarge for enhanced readability */
+img[src*="shap_summary_mlp.png"],
+img[src*="shap_summary_logistic.png"] {
+  max-width: 94%;
+  max-height: 232px;
+}
+
+figcaption, em {
+  display: block;
+  font-size: 8.5pt;
+  color: #475569;
+  margin-top: 4pt;
+  text-align: center;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid #f59e0b;
+  background: #fffbeb;
+  margin: 10pt 0;
+  padding: 8pt 12pt;
+  font-size: 8.5pt;
+  color: #78350f;
+  page-break-inside: avoid;
+}
+
+/* Math elements */
+.MathJax {
+  font-size: 102% !important;
+}
+
+/* Lists */
+ul, ol {
+  margin-top: 2pt;
+  margin-bottom: 4.5pt;
+  padding-left: 18pt;
+}
+
+li {
+  margin-bottom: 3pt;
+}
+
+hr {
+  display: none;
+}
+</style>
+
+</head>
+<body>
+<h1
+id="churniq-ai-powered-telecom-customer-churn-prediction-system">ChurnIQ:
+AI-Powered Telecom Customer Churn Prediction System</h1>
+<h2
+id="academic-project-report--comprehensive-technical-evaluation">Academic
+Project Report &amp; Comprehensive Technical Evaluation</h2>
+<hr />
+<p><strong>Course:</strong> AI &amp; ML II (CSR311)<br />
+<strong>Project Title:</strong> ChurnIQ – AI-Powered Telecom Customer
+Churn Prediction System<br />
+<strong>Project Version:</strong> 1.0.0<br />
+<strong>Student Name:</strong> Shaik Irfan<br />
+<strong>Roll Number:</strong> 44<br />
+<strong>Registration Number:</strong> 12407809<br />
+<strong>Programme:</strong> B.Tech Computer Science and Engineering (AI
+&amp; Data Engineering)<br />
+<strong>Institution:</strong> Lovely Professional University, Phagwara,
+Punjab<br />
+<strong>Date of Submission:</strong> November 2026</p>
+<hr />
+<h3 id="executive-abstract">Executive Abstract</h3>
+<p>Customer attrition (churn) directly impacts recurring revenue in
+subscription-based telecommunications. This report presents
+<strong>ChurnIQ</strong>, an end-to-end, leakage-free machine learning
+and deep learning system developed on the benchmark IBM Telco Customer
+Churn dataset (<span class="math inline">\(N = 7,043\)</span>) [1]. To
+avoid methodological pitfalls prevalent in standard churn modeling,
+ChurnIQ strictly enforces data isolation via a 70/15/15 stratified
+partition, fitting all feature transformations exclusively on training
+data using Scikit-learn [4]. A customized Deep Multilayer Perceptron
+(MLP)—architected with 46 input features, three regularized hidden
+layers (<span class="math inline">\(46 \rightarrow 64 \rightarrow 32
+\rightarrow 16 \rightarrow 1\)</span>), ReLU activations, hidden-layer
+<span class="math inline">\(L_2\)</span> regularization (<span
+class="math inline">\(\lambda = 0.001\)</span>), inverted dropout (<span
+class="math inline">\(p = 0.25\)</span>) [6], and 5,633 trainable
+parameters—was implemented in Keras 3 [2] over the PyTorch CPU backend
+[3]. The network is optimized via the Adam algorithm [5] under a
+class-weighted binary cross-entropy loss [8] to counteract class
+imbalance. The MLP is benchmarked against an <span
+class="math inline">\(L_2\)</span>-penalized Logistic Regression
+baseline [4]. Decision thresholds were optimized independently on
+validation data to maximize the <span
+class="math inline">\(F_1\)</span>-score, yielding <span
+class="math inline">\(\tau^* = 0.46\)</span> for the MLP and <span
+class="math inline">\(\tau^* = 0.54\)</span> for Logistic
+Regression.</p>
+<p>In a frozen, single-pass evaluation on the quarantined test partition
+(<span class="math inline">\(n = 1,057\)</span>, containing 281
+ground-truth churners), the MLP achieved an <span
+class="math inline">\(F_1\)</span>-score of <strong>0.6326</strong>
+(<span class="math inline">\(\text{ROC-AUC} = 0.8465\)</span>, <span
+class="math inline">\(\text{Recall} = 79.36\%\)</span>, <span
+class="math inline">\(\text{Precision} = 52.59\%\)</span>, capturing 223
+churners), while Logistic Regression achieved an <span
+class="math inline">\(F_1\)</span>-score of <strong>0.6259</strong>
+(<span class="math inline">\(\text{ROC-AUC} = 0.8448\)</span>, <span
+class="math inline">\(\text{Recall} = 74.73\%\)</span>, <span
+class="math inline">\(\text{Precision} = 53.85\%\)</span>, <span
+class="math inline">\(\text{PR-AUC} = 0.6592\)</span>). Evaluated at
+their respective validation-optimized thresholds, the MLP demonstrated
+slightly higher test <span class="math inline">\(F_1\)</span> and
+recall, whereas Logistic Regression exhibited higher PR-AUC and
+precision; this <span class="math inline">\(F_1\)</span> difference is
+small (<span class="math inline">\(\Delta F_1 = +0.0067\)</span>), and
+statistical significance was not formally tested. Model-agnostic
+Explainable AI (SHAP KernelExplainer) [7] grounded in 75 stratified real
+training records revealed account tenure, monthly charges, and contract
+terms as the dominant predictive drivers for the MLP, with internet
+service and online security exhibiting smaller secondary contributions.
+Crucially, SHAP attributions reflect model associative sensitivity
+rather than real-world causality. Finally, predictions are
+operationalized through a decoupled 3-tier business risk stratification
+engine (Low: <span class="math inline">\(P &lt; 0.30\)</span>, Medium:
+<span class="math inline">\(0.30 \le P &lt; 0.70\)</span>, High: <span
+class="math inline">\(P \ge 0.70\)</span>), an interactive 7-page
+Streamlit dashboard [9], and an 85-test automated verification suite
+built with pytest [10].</p>
+<hr />
+<h1 id="section-1-problem-definition-and-dataset-description">Section 1:
+Problem Definition and Dataset Description</h1>
+<h4 id="11-telecom-customer-churn-problem">1.1 Telecom Customer Churn
+Problem</h4>
+<p>In subscription telecommunications (e.g., cellular service, home
+broadband, streaming bundles), customer attrition—commonly designated as
+"churn"—refers to the phenomenon where a subscriber cancels their
+contract or migrates to a competing provider. Because telecommunications
+markets in developed economies have reached high penetration and
+saturation, net subscriber growth cannot rely purely on unserviced
+market expansion. Instead, service providers operate in a mature,
+competitive landscape where customer acquisition typically incurs
+substantially higher sales, marketing, and onboarding expenses than
+proactive customer retention.</p>
+<p>Consequently, predictive churn modeling serves as a critical
+strategic imperative:</p>
+<ol type="1">
+<li><strong>Recurring Revenue Preservation:</strong> Proactive
+identification of at-risk subscribers allows providers to stabilize
+Monthly Recurring Revenue (MRR) and mitigate subscriber lifetime value
+erosion.</li>
+<li><strong>Potential Asymmetric Error Costs:</strong> In churn
+management, classification errors carry asymmetric operational
+implications:
+<ul>
+<li>A <strong>False Negative (FN)</strong>—failing to identify a
+customer who is considering churn—poses an operational risk of
+unaddressed subscriber defection, potentially forfeiting future
+recurring revenue if the subscriber leaves without intervention.</li>
+<li>A <strong>False Positive (FP)</strong>—flagging a retained
+subscriber as at-risk—may incur operational costs such as staff outreach
+time, unnecessary customer contact, or unneeded promotional discount
+offers. Therefore, higher recall on the positive churn class is
+typically prioritized to mitigate defection risks, provided false
+positive costs remain within budgeted retention margins.</li>
+</ul></li>
+<li><strong>Actionable Retention:</strong> Predictions must be
+accompanied by granular explanations so customer retention agents can
+address specific subscriber grievances (e.g., pricing dissatisfaction,
+inadequate tech support, or contract inflexibility).</li>
+</ol>
+<h4 id="12-project-objectives-and-scope">1.2 Project Objectives and
+Scope</h4>
+<p>The ChurnIQ system was designed to address three systemic failures
+observed in industry churn workflows:</p>
+<ul>
+<li><strong>Eliminate Data Leakage:</strong> Ensure data cleaning,
+imputation, and feature transformations are fitted strictly on training
+data without contaminating validation or test sets.</li>
+<li><strong>Overcome Default Threshold Biases:</strong> Eliminate the
+arbitrary default decision threshold of <span class="math inline">\(\tau
+= 0.50\)</span>, tuning decision boundaries on validation data to
+maximize operational <span
+class="math inline">\(F_1\)</span>-score.</li>
+<li><strong>Provide Model-Agnostic Explainability:</strong> Bridge deep
+neural network predictions with frontline retention specialists via SHAP
+feature attributions [7].</li>
+</ul>
+<h4 id="13-dataset-description">1.3 Dataset Description</h4>
+<p>The system is built and benchmarked using the authoritative
+<strong>IBM Telco Customer Churn</strong> dataset
+(<code>WA_Fn-UseC_-Telco-Customer-Churn.csv</code>) [1]. The dataset
+contains <span class="math inline">\(N = 7,043\)</span> individual
+subscriber records, each documented across 21 original columns:</p>
+<ul>
+<li><strong>Demographics (4 columns):</strong> <code>gender</code>,
+<code>SeniorCitizen</code>, <code>Partner</code>,
+<code>Dependents</code>.</li>
+<li><strong>Subscribed Telephony &amp; Internet Services (9
+columns):</strong> <code>PhoneService</code>,
+<code>MultipleLines</code>, <code>InternetService</code> (DSL, Fiber
+optic, No), <code>OnlineSecurity</code>, <code>OnlineBackup</code>,
+<code>DeviceProtection</code>, <code>TechSupport</code>,
+<code>StreamingTV</code>, <code>StreamingMovies</code>.</li>
+<li><strong>Account Contracting &amp; Billing (7 columns):</strong>
+<code>tenure</code> (months active), <code>Contract</code>
+(Month-to-month, One year, Two year), <code>PaperlessBilling</code>,
+<code>PaymentMethod</code> (Electronic check, Mailed check, Bank
+transfer, Credit card), <code>MonthlyCharges</code>,
+<code>TotalCharges</code>, and metadata key
+<code>customerID</code>.</li>
+<li><strong>Target Variable (1 column):</strong> <code>Churn</code>
+(<code>Yes</code> or <code>No</code>).</li>
+</ul>
+<h4 id="14-class-distribution-and-imbalance">1.4 Class Distribution and
+Imbalance</h4>
+<p>The target distribution demonstrates a natural class imbalance
+representative of real-world telecommunications:</p>
+<ul>
+<li><strong>Non-Churners (<code>Churn = No</code>):</strong> 5,174
+subscribers (<span class="math inline">\(73.46\%\)</span>)</li>
+<li><strong>Churners (<code>Churn = Yes</code>):</strong> 1,869
+subscribers (<span class="math inline">\(26.54\%\)</span>)</li>
+<li><strong>Imbalance Ratio:</strong> Approximately <span
+class="math inline">\(2.77 : 1\)</span>.</li>
+</ul>
+<p>Because nearly three-quarters of the dataset represents non-churners,
+naive classifiers predicting the majority class would achieve an
+apparent accuracy of <span class="math inline">\(73.46\%\)</span> while
+completely failing to identify any churners (<span
+class="math inline">\(0\%\)</span> recall). This imbalance necessitates
+specialized handling through stratified sampling, balanced loss
+weighting [8], and validation threshold tuning.</p>
+<h4 id="15-rationale-for-identifier-exclusion-customerid">1.5 Rationale
+for Identifier Exclusion (<code>customerID</code>)</h4>
+<p>The <code>customerID</code> attribute consists of unique arbitrary
+alphanumeric identifiers (e.g., <code>7590-VHVEG</code>). It was
+strictly excluded from the predictive feature set. Unique identifiers
+have maximal cardinality (<span class="math inline">\(7,043\)</span>
+unique values for <span class="math inline">\(7,043\)</span> rows) and
+carry zero generalizable predictive signal regarding subscriber
+behavior. Including identifier tokens in a parametric model or neural
+network risks arbitrary memorization and overfitting on spurious
+training noise. In ChurnIQ, <code>customerID</code> is isolated purely
+as an immutable tracking key in auxiliary metadata.</p>
+<hr />
+<h1 id="section-2-data-preprocessing-and-leakage-prevention">Section 2:
+Data Preprocessing and Leakage Prevention</h1>
+<pre><code>Raw Dataset (7,043 rows, 21 columns)
+        │
+        ▼
+Data Hygiene &amp; Sanitization (TotalCharges whitespace -&gt; 0.0, Target -&gt; {0, 1})
+        │
+        ▼
+3-Way Stratified Partitioning (Random Seed = 42)
+  ├── Training Partition:   4,930 rows (70.0%) [1,308 churners, 3,622 non-churners]
+  ├── Validation Partition: 1,056 rows (15.0%) [  280 churners,   776 non-churners]
+  └── Test Partition:       1,057 rows (15.0%) [  281 churners,   776 non-churners] (Quarantined)
+        │
+        ▼
+ColumnTransformer Pipeline (Fitted Exclusively on Training Partition via Scikit-learn)
+  ├── 3 Numeric Columns:     StandardScaler (fit on Train) -&gt; tenure, MonthlyCharges, TotalCharges
+  └── 16 Categorical Columns: OneHotEncoder(handle_unknown=&#39;ignore&#39;) -&gt; 43 orthogonal dummy features
+        │
+        ▼
+Exact Output Feature Vector: 46 Predictive Features</code></pre>
+<h4 id="21-data-hygiene--anomaly-resolution">2.1 Data Hygiene &amp;
+Anomaly Resolution</h4>
+<p>During schema inspection, 11 subscriber records were identified
+containing whitespace strings (<code>" "</code>) within the
+<code>TotalCharges</code> field. Converting this column to
+floating-point representation without prior sanitization causes parser
+failure.</p>
+<p>Crucially, an audit of these 11 records demonstrated that every
+record had an account <code>tenure == 0</code>. These records represent
+newly onboarded subscribers who enrolled during the current active
+billing cycle and had not yet completed their first monthly billing
+cycle. Dropping these 11 rows would introduce sample selection bias, and
+imputing them with the global mean or median would introduce false
+historical spend. The mathematically sound resolution was imputing
+<code>TotalCharges = 0.0</code>, reflecting their true zero billing
+history. Target binarization mapped <code>No</code> to <span
+class="math inline">\(0\)</span> and <code>Yes</code> to <span
+class="math inline">\(1\)</span>.</p>
+<h4 id="22-stratified-partitioning-protocol">2.2 Stratified Partitioning
+Protocol</h4>
+<p>To ensure rigorous validation without distribution shift, the
+sanitized dataset was split using a <strong>70/15/15 stratified
+partition</strong> seeded deterministically (<code>seed=42</code>):</p>
+<ul>
+<li><strong>Training Set:</strong> 4,930 records (1,308 churners, <span
+class="math inline">\(26.53\%\)</span>)</li>
+<li><strong>Validation Set:</strong> 1,056 records (280 churners, <span
+class="math inline">\(26.52\%\)</span>)</li>
+<li><strong>Test Set:</strong> 1,057 records (281 churners, <span
+class="math inline">\(26.58\%\)</span>)</li>
+</ul>
+<p>Stratification guarantees that the <span
+class="math inline">\(2.77:1\)</span> class balance is identically
+preserved across all three splits. Set intersection verification
+confirms zero customer ID overlap across partitions (<span
+class="math inline">\(|\mathcal{S}_{\text{train}} \cap
+\mathcal{S}_{\text{val}}| = 0\)</span>, <span
+class="math inline">\(|\mathcal{S}_{\text{train}} \cap
+\mathcal{S}_{\text{test}}| = 0\)</span>).</p>
+<h4 id="23-feature-transformation-pipeline">2.3 Feature Transformation
+Pipeline</h4>
+<p>Features are categorized and transformed using an automated
+Scikit-learn <code>ColumnTransformer</code> [4]:</p>
+<ol type="1">
+<li><strong>Continuous Scaling (3 features):</strong>
+<code>tenure</code>, <code>MonthlyCharges</code>, and
+<code>TotalCharges</code> are scaled to zero mean and unit variance via
+<code>StandardScaler</code>: <span class="math display">\[z = \frac{x -
+\mu_{\text{train}}}{\sigma_{\text{train}}}\]</span></li>
+<li><strong>Categorical Encoding (16 features):</strong> Multi-class and
+binary categorical features are encoded using
+<code>OneHotEncoder(drop=None, handle_unknown='ignore')</code>. This
+unpacks demographic, service, and contract categories into <strong>43
+orthogonal binary dummy columns</strong>.</li>
+<li><strong>Total Feature Space:</strong> Combining 3 continuous scaled
+attributes with 43 one-hot columns produces an exact vector dimension of
+<strong>46 predictive features</strong>.</li>
+</ol>
+<h4 id="24-mathematical-prevention-of-data-leakage">2.4 Mathematical
+Prevention of Data Leakage</h4>
+<p>Data leakage occurs when information from outside the training
+partition contaminates model construction. If a preprocessor (such as
+<code>StandardScaler</code> or <code>OneHotEncoder</code>) is fitted on
+the entire dataset prior to splitting, the transformation parameters
+(<span class="math inline">\(\mu\)</span>, <span
+class="math inline">\(\sigma\)</span>, category dictionaries) encode
+statistical properties of the test set. This produces over-optimistic
+evaluation metrics that degrade sharply in production.</p>
+<p>In ChurnIQ, data leakage is prevented mathematically:</p>
+<ul>
+<li>The <code>ColumnTransformer</code> is fitted <strong>exclusively on
+the training split</strong> (<span
+class="math inline">\(X_{\text{train}}\)</span>).</li>
+<li>The resulting scaling parameters <span
+class="math inline">\(\mu_{\text{train}}\)</span> and <span
+class="math inline">\(\sigma_{\text{train}}\)</span> are frozen and
+serialized into <code>models/preprocessor.joblib</code>.</li>
+<li>Validation (<span class="math inline">\(X_{\text{val}}\)</span>) and
+test (<span class="math inline">\(X_{\text{test}}\)</span>) partitions
+are transformed using the frozen parameters.</li>
+<li>Out-of-vocabulary categorical levels in future inference are safely
+mapped to all-zero vectors via <code>handle_unknown='ignore'</code>,
+preventing runtime exceptions.</li>
+</ul>
+<hr />
+<h1 id="section-3-neural-network-implementation">Section 3:
+Neural-Network Implementation</h1>
+<h4 id="31-network-topology-and-layer-dimensions">3.1 Network Topology
+and Layer Dimensions</h4>
+<p>The primary deep learning model in ChurnIQ is a custom feedforward
+<strong>Multilayer Perceptron (MLP)</strong> architected specifically
+for structured tabular classification. The network maps the
+46-dimensional input vector to a single churn risk score via three fully
+connected (Dense) hidden layers with regularization:</p>
+<p><span class="math display">\[\text{Input } (46) \longrightarrow
+\text{Dense}(64) \longrightarrow \text{Dropout}(0.25) \longrightarrow
+\text{Dense}(32) \longrightarrow \text{Dropout}(0.25) \longrightarrow
+\text{Dense}(16) \longrightarrow \text{Dense}(1,
+\text{Sigmoid})\]</span></p>
+<table>
+<thead>
+<tr>
+<th>Layer (Type)</th>
+<th style="text-align: center;">Output Shape</th>
+<th style="text-align: center;">Param #</th>
+<th>Activation &amp; Regularization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input Layer</strong></td>
+<td style="text-align: center;"><code>(None, 46)</code></td>
+<td style="text-align: center;">0</td>
+<td>None (Normalized continuous &amp; one-hot features)</td>
+</tr>
+<tr>
+<td><strong>Dense Hidden 1</strong></td>
+<td style="text-align: center;"><code>(None, 64)</code></td>
+<td style="text-align: center;">3,008</td>
+<td>ReLU + <span class="math inline">\(L_2\)</span> Regularization
+(<span class="math inline">\(\lambda = 0.001\)</span>)</td>
+</tr>
+<tr>
+<td><strong>Dropout 1</strong></td>
+<td style="text-align: center;"><code>(None, 64)</code></td>
+<td style="text-align: center;">0</td>
+<td>Inverted Dropout Rate <span class="math inline">\(p =
+0.25\)</span></td>
+</tr>
+<tr>
+<td><strong>Dense Hidden 2</strong></td>
+<td style="text-align: center;"><code>(None, 32)</code></td>
+<td style="text-align: center;">2,080</td>
+<td>ReLU + <span class="math inline">\(L_2\)</span> Regularization
+(<span class="math inline">\(\lambda = 0.001\)</span>)</td>
+</tr>
+<tr>
+<td><strong>Dropout 2</strong></td>
+<td style="text-align: center;"><code>(None, 32)</code></td>
+<td style="text-align: center;">0</td>
+<td>Inverted Dropout Rate <span class="math inline">\(p =
+0.25\)</span></td>
+</tr>
+<tr>
+<td><strong>Dense Hidden 3</strong></td>
+<td style="text-align: center;"><code>(None, 16)</code></td>
+<td style="text-align: center;">528</td>
+<td>ReLU + <span class="math inline">\(L_2\)</span> Regularization
+(<span class="math inline">\(\lambda = 0.001\)</span>)</td>
+</tr>
+<tr>
+<td><strong>Output Layer</strong></td>
+<td style="text-align: center;"><code>(None, 1)</code></td>
+<td style="text-align: center;">17</td>
+<td>Sigmoid (<span class="math inline">\(\sigma(z) = \frac{1}{1 +
+e^{-z}}\)</span>) — Unregularized</td>
+</tr>
+<tr>
+<td><strong>Trainable Parameters</strong></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>5,633</strong></td>
+<td><em>Active weights and biases across all 4 dense layers</em></td>
+</tr>
+<tr>
+<td><strong>Non-Trainable Parameters</strong></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>0</strong></td>
+<td><em>All layer parameters are actively updated during
+backprop</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="32-exact-trainable-parameter-count-derivation">3.2 Exact
+Trainable Parameter Count Derivation</h4>
+<p>The number of trainable parameters in a fully connected dense layer
+connecting an input dimension <span
+class="math inline">\(n_{\text{in}}\)</span> to an output dimension
+<span class="math inline">\(n_{\text{out}}\)</span> with bias is given
+by:</p>
+<p><span class="math display">\[P = (n_{\text{in}} \times
+n_{\text{out}}) + n_{\text{out}}\]</span></p>
+<p>Applying this formula layer by layer:</p>
+<ol type="1">
+<li><strong>Hidden Layer 1 (Dense 64):</strong> <span
+class="math display">\[P_1 = (46 \times 64) + 64 = 2,944 + 64 =
+\mathbf{3,008} \text{ parameters}\]</span></li>
+<li><strong>Hidden Layer 2 (Dense 32):</strong> <span
+class="math display">\[P_2 = (64 \times 32) + 32 = 2,048 + 32 =
+\mathbf{2,080} \text{ parameters}\]</span></li>
+<li><strong>Hidden Layer 3 (Dense 16):</strong> <span
+class="math display">\[P_3 = (32 \times 16) + 16 = 512 + 16 =
+\mathbf{528} \text{ parameters}\]</span></li>
+<li><strong>Output Layer (Dense 1):</strong> <span
+class="math display">\[P_{\text{out}} = (16 \times 1) + 1 = 16 + 1 =
+\mathbf{17} \text{ parameters}\]</span></li>
+</ol>
+<p><span class="math display">\[\text{Total Trainable Parameters} =
+3,008 + 2,080 + 528 + 17 = \mathbf{5,633} \text{
+parameters}\]</span></p>
+<p><em>Model Capacity &amp; Complexity Control:</em> With 5,633
+trainable parameters on 4,930 training records, the parameter-to-sample
+ratio exceeds 1.0. A feedforward network of this size would readily
+overfit or memorize tabular training patterns if unconstrained. To
+control model capacity and enforce generalizable representations,
+ChurnIQ incorporates three explicit complexity-control mechanisms:
+hidden-layer <span class="math inline">\(L_2\)</span> regularization
+(<span class="math inline">\(\lambda = 0.001\)</span>), inverted dropout
+(<span class="math inline">\(p = 0.25\)</span>), and
+validation-monitored early stopping with best-weight restoration.</p>
+<h4 id="33-activation-functions">3.3 Activation Functions</h4>
+<p>Non-linear activation functions enable the MLP to learn complex
+decision boundaries:</p>
+<ol type="1">
+<li><strong>Rectified Linear Unit (ReLU):</strong> Applied across all
+three hidden layers: <span class="math display">\[f(z) = \max(0, z),
+\quad f&#39;(z) = \begin{cases} 1 &amp; \text{if } z &gt; 0 \\ 0 &amp;
+\text{if } z \le 0 \end{cases}\]</span> <em>Academic Justification:</em>
+Unlike saturating activations (e.g., Sigmoid or Tanh), ReLU maintains a
+constant gradient of <span class="math inline">\(1.0\)</span> for
+positive activations. This substantially mitigates the vanishing
+gradient problem during backpropagation and accelerates convergence in
+deep feedforward networks.</li>
+<li><strong>Sigmoid (Logistic Activation):</strong> Applied exclusively
+at the single output neuron: <span class="math display">\[\sigma(z) =
+\frac{1}{1 + e^{-z}}, \quad \sigma&#39;(z) = \sigma(z)(1 -
+\sigma(z))\]</span> <em>Academic Justification:</em> The Sigmoid
+function maps real-valued logits <span class="math inline">\(z \in
+(-\infty, +\infty)\)</span> monotonically into the open interval <span
+class="math inline">\(\hat{y} \in (0, 1)\)</span>. Because the network
+is trained with balanced class weights (<span class="math inline">\(W_1
+\approx 1.8846, W_0 \approx 0.6806\)</span>), the continuous output
+<span class="math inline">\(\hat{y}\)</span> functions as a
+cost-sensitive <strong>churn risk score</strong> rather than an
+empirically calibrated posterior probability <span
+class="math inline">\(P(\text{Churn} = 1 \mid \mathbf{x})\)</span>. This
+continuous risk score is well-suited for validation threshold tuning and
+business risk stratification.</li>
+</ol>
+<h4 id="34-loss-formulation-class-weighted-binary-cross-entropy">3.4
+Loss Formulation: Class-Weighted Binary Cross-Entropy</h4>
+<p>For a training sample <span class="math inline">\((\mathbf{x}_i,
+y_i)\)</span> with ground-truth binary label <span
+class="math inline">\(y_i \in \{0, 1\}\)</span> and predicted risk score
+<span class="math inline">\(\hat{y}_i = \sigma(z_i)\)</span>, the Binary
+Cross-Entropy (BCE) loss incorporates class weighting terms <span
+class="math inline">\(w_0\)</span> and <span
+class="math inline">\(w_1\)</span> to combat class imbalance [8]:</p>
+<p><span class="math display">\[\mathcal{L}_{\text{BCE}}(y_i, \hat{y}_i)
+= -\left[ w_1 y_i \ln(\hat{y}_i) + w_0 (1 - y_i) \ln(1 - \hat{y}_i)
+\right]\]</span></p>
+<p>where <span class="math inline">\(w_1 = \frac{N_{\text{train}}}{2
+N_1} \approx 1.8846\)</span> and <span class="math inline">\(w_0 =
+\frac{N_{\text{train}}}{2 N_0} \approx 0.6806\)</span>. For a given
+sample <span class="math inline">\(i\)</span>, the active class weight
+is denoted <span class="math inline">\(w_{y_i} = y_i w_1 + (1 - y_i)
+w_0\)</span>.</p>
+<p>Under the Keras implementation (<code>regularizers.l2(0.001)</code>),
+<span class="math inline">\(L_2\)</span> regularization penalizes the
+sum of squared weights without a <span
+class="math inline">\(\frac{1}{2}\)</span> multiplier. The
+implementation applies <span class="math inline">\(L_2\)</span>
+regularization exclusively to the three hidden Dense layers (<span
+class="math inline">\(l \in \{1, 2, 3\}\)</span>); the output neuron is
+unregularized. The overall mini-batch objective for <span
+class="math inline">\(m\)</span> samples is:</p>
+<p><span class="math display">\[\mathcal{L}(\theta) = \frac{1}{m}
+\sum_{i=1}^m \mathcal{L}_{\text{BCE}}(y_i, \hat{y}_i) + \lambda
+\sum_{l=1}^3 \|W^{[l]}\|_F^2\]</span></p>
+<p>where <span class="math inline">\(\|W^{[l]}\|_F^2 = \sum_{j,k}
+(W_{jk}^{[l]})^2\)</span> and <span class="math inline">\(\lambda =
+0.001\)</span>.</p>
+<p><em>Output Error Derivation:</em> Differentiating the weighted sample
+loss <span class="math inline">\(\mathcal{L}_{\text{BCE}}(y_i,
+\hat{y}_i)\)</span> with respect to the output logit <span
+class="math inline">\(z_i\)</span>:</p>
+<ul>
+<li>For a positive instance (<span class="math inline">\(y_i =
+1\)</span>): <span class="math display">\[\frac{\partial
+\mathcal{L}_{\text{BCE}}}{\partial z_i} = -w_1 \frac{1}{\hat{y}_i} \cdot
+\sigma&#39;(z_i) = -w_1 \frac{1}{\hat{y}_i} \cdot \hat{y}_i(1 -
+\hat{y}_i) = -w_1 (1 - \hat{y}_i) = w_1 (\hat{y}_i - 1)\]</span></li>
+<li>For a negative instance (<span class="math inline">\(y_i =
+0\)</span>): <span class="math display">\[\frac{\partial
+\mathcal{L}_{\text{BCE}}}{\partial z_i} = -w_0 \frac{-1}{1 - \hat{y}_i}
+\cdot \sigma&#39;(z_i) = w_0 \frac{1}{1 - \hat{y}_i} \cdot \hat{y}_i(1 -
+\hat{y}_i) = w_0 \hat{y}_i = w_0 (\hat{y}_i - 0)\]</span></li>
+</ul>
+<p>Unifying both cases demonstrates that the per-sample output error
+term <span class="math inline">\(\delta_i^{[4]}\)</span> is proportional
+to the weighted residual:</p>
+<p><span class="math display">\[\delta_i^{[4]} = \frac{\partial
+\mathcal{L}_{\text{BCE}}(y_i, \hat{y}_i)}{\partial z_i} = w_{y_i}
+(\hat{y}_i - y_i)\]</span></p>
+<p>This error signal scales linearly with prediction residual and is
+amplified by <span class="math inline">\(w_{y_i}\)</span>, penalizing
+positive-class false negatives approximately <span
+class="math inline">\(2.77\times\)</span> more heavily than false
+positives.</p>
+<h4 id="35-backpropagation-and-computational-flow">3.5 Backpropagation
+and Computational Flow</h4>
+<p>Backpropagation computes parameter gradients via the multivariable
+chain rule of calculus:</p>
+<ol type="1">
+<li><p><strong>Forward Propagation:</strong> For a mini-batch of <span
+class="math inline">\(m\)</span> samples represented as row vectors in
+activation matrix <span class="math inline">\(A^{[l-1]} \in
+\mathbb{R}^{m \times n_{l-1}}\)</span>: <span
+class="math display">\[Z^{[1]} = A^{[0]} (W^{[1]})^T + \mathbf{1}
+(b^{[1]})^T, \quad A^{[1]} = \text{ReLU}(Z^{[1]}) \in \mathbb{R}^{m
+\times 64}\]</span> <span class="math display">\[Z^{[2]} = A^{[1]}
+(W^{[2]})^T + \mathbf{1} (b^{[2]})^T, \quad A^{[2]} =
+\text{ReLU}(Z^{[2]}) \in \mathbb{R}^{m \times 32}\]</span> <span
+class="math display">\[Z^{[3]} = A^{[2]} (W^{[3]})^T + \mathbf{1}
+(b^{[3]})^T, \quad A^{[3]} = \text{ReLU}(Z^{[3]}) \in \mathbb{R}^{m
+\times 16}\]</span> <span class="math display">\[Z^{[4]} = A^{[3]}
+(W^{[4]})^T + \mathbf{1} (b^{[4]})^T, \quad \hat{Y} = \sigma(Z^{[4]})
+\in \mathbb{R}^{m \times 1}\]</span> where <span
+class="math inline">\(A^{[0]} = X \in \mathbb{R}^{m \times 46}\)</span>
+is the input mini-batch.</p></li>
+<li><p><strong>Backward Propagation:</strong> Let the error matrix be
+defined as the derivative of loss with respect to pre-activations: <span
+class="math inline">\(\Delta^{[l]} \equiv \frac{\partial
+\mathcal{L}}{\partial Z^{[l]}} \in \mathbb{R}^{m \times n_l}\)</span>.
+For the unregularized output layer (<span class="math inline">\(l =
+4\)</span>), the per-sample error vector is the weighted residual: <span
+class="math display">\[\Delta_i^{[4]} = w_{y_i} (\hat{y}_i - y_i)
+\implies \frac{\partial \mathcal{L}}{\partial W^{[4]}} = \frac{1}{m}
+(\Delta^{[4]})^T A^{[3]}, \quad \frac{\partial \mathcal{L}}{\partial
+b^{[4]}} = \frac{1}{m} \sum_{i=1}^m \Delta_i^{[4]}\]</span> Propagating
+error backward through each hidden layer <span class="math inline">\(l
+\in \{3, 2, 1\}\)</span>: <span class="math display">\[\Delta^{[l]} =
+\left( \Delta^{[l+1]} W^{[l+1]} \right) \odot f&#39;(Z^{[l]})\]</span>
+<span class="math display">\[\frac{\partial \mathcal{L}}{\partial
+W^{[l]}} = \frac{1}{m} (\Delta^{[l]})^T A^{[l-1]} + 2\lambda
+W^{[l]}\]</span> <span class="math display">\[\frac{\partial
+\mathcal{L}}{\partial b^{[l]}} = \frac{1}{m} \sum_{i=1}^m
+\Delta_i^{[l]}\]</span> where <span class="math inline">\(\odot\)</span>
+denotes the Hadamard element-wise product, <span
+class="math inline">\(f&#39;(Z^{[l]})\)</span> is the subgradient of the
+ReLU activation, and <span class="math inline">\(2\lambda
+W^{[l]}\)</span> is the exact derivative of the Keras <span
+class="math inline">\(L_2\)</span> penalty (<span
+class="math inline">\(\lambda \sum W^2\)</span>).</p>
+<p>Because the error term <span class="math inline">\(\Delta^{[l]}
+\equiv \frac{\partial \mathcal{L}}{\partial Z^{[l]}}\)</span> already
+incorporates the activation derivative through the multivariable chain
+rule and <span class="math inline">\(\frac{\partial Z^{[l]}}{\partial
+b^{[l]}} = I\)</span>, the gradient with respect to the bias vector
+simplifies directly to the unweighted average of the error vectors
+across the mini-batch: <span class="math inline">\(\frac{\partial
+\mathcal{L}}{\partial b^{[l]}} = \frac{1}{m} \sum_{i=1}^m
+\Delta_i^{[l]}\)</span>. No secondary activation derivative is
+applied.</p></li>
+</ol>
+<div class="page-break"></div>
+
+<h4 id="36-optimization-algorithm-adam">3.6 Optimization Algorithm:
+Adam</h4>
+<p>Optimization is executed via <strong>Adam (Adaptive Moment
+Estimation)</strong> [5], which maintains individual adaptive learning
+rates for each parameter by computing exponentially decaying moving
+averages of past gradients and squared gradients:</p>
+<ol type="1">
+<li><strong>First Moment Estimate (Momentum):</strong> <span
+class="math display">\[m_t = \beta_1 m_{t-1} + (1 - \beta_1)
+g_t\]</span></li>
+<li><strong>Second Moment Estimate (Uncentered Variance):</strong> <span
+class="math display">\[v_t = \beta_2 v_{t-1} + (1 - \beta_2)
+g_t^2\]</span></li>
+<li><strong>Bias Corrections (compensating for zero
+initialization):</strong> <span class="math display">\[\hat{m}_t =
+\frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 -
+\beta_2^t}\]</span></li>
+<li><strong>Parameter Update Rule:</strong> <span
+class="math display">\[\theta_{t+1} = \theta_t -
+\frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t\]</span></li>
+</ol>
+<p><em>Hyperparameter Settings:</em> Learning rate <span
+class="math inline">\(\eta = 0.001\)</span>, batch size = <span
+class="math inline">\(32\)</span>, first-moment decay <span
+class="math inline">\(\beta_1 = 0.9\)</span>, second-moment decay <span
+class="math inline">\(\beta_2 = 0.999\)</span>, and numerical stability
+constant <span class="math inline">\(\epsilon = 10^{-7}\)</span>.</p>
+<h4 id="37-regularization-strategy">3.7 Regularization Strategy</h4>
+<p>To prevent overfitting on the <span
+class="math inline">\(4,930\)</span> training records, ChurnIQ
+integrates two complementary regularization mechanisms:</p>
+<ol type="1">
+<li><strong><span class="math inline">\(L_2\)</span> Weight
+Regularization (<span class="math inline">\(L_2\)</span>
+Penalty):</strong> Applied exclusively to the weight matrices of the
+three hidden Dense layers with penalty coefficient <span
+class="math inline">\(\lambda = 0.001\)</span>. By penalizing the
+squared Frobenius norm <span class="math inline">\(\|W\|_F^2\)</span>,
+<span class="math inline">\(L_2\)</span> regularization constrains
+weight magnitudes, discouraging the network from developing extreme
+coefficients. The optimizer is standard Adam, operating with <span
+class="math inline">\(L_2\)</span> loss penalization rather than
+decoupled weight decay (AdamW).</li>
+<li><strong>Inverted Dropout (<span class="math inline">\(p =
+0.25\)</span>) [6]:</strong> Applied after Hidden Layer 1 and Hidden
+Layer 2. During each forward training pass, <span
+class="math inline">\(25\%\)</span> of hidden neuron activations are
+randomly set to zero. Under inverted dropout, surviving activations are
+scaled by <span class="math inline">\(\frac{1}{1-p} = \frac{1}{0.75}
+\approx 1.3333\)</span> during training, preserving expected activation
+magnitudes (<span class="math inline">\(\mathbb{E}[A^{[l]}] =
+A^{[l]}\)</span>). Consequently, at test and inference time, dropout is
+deactivated (acting as an identity operation), and <strong>no additional
+scaling is required during inference</strong>.</li>
+</ol>
+<h4 id="38-framework-architecture-keras-3-with-pytorch-cpu-backend">3.8
+Framework Architecture: Keras 3 with PyTorch CPU Backend</h4>
+<p>To ensure stability on Windows systems with active Smart App Control
+(which blocks native TensorFlow C-extensions), the neural network was
+authored in <strong>Keras 3.15.1</strong> [2] using the <strong>PyTorch
+2.15.0+cpu</strong> backend [3] (<code>KERAS_BACKEND=torch</code>). This
+guarantees high-performance tensor execution and strict numerical
+reproducibility without requiring external compilation dependencies.</p>
+<hr />
+<h1 id="section-4-training-and-optimization">Section 4: Training and
+Optimization</h1>
+<h4 id="41-training-procedure--hyperparameter-selection">4.1 Training
+Procedure &amp; Hyperparameter Selection</h4>
+<p>The MLP was trained using mini-batch gradient descent with a batch
+size of <span class="math inline">\(32\)</span> samples over a maximum
+budget of <span class="math inline">\(50\)</span> epochs. At each epoch,
+the dataset was shuffled, and mini-batches were streamed through forward
+and backward passes.</p>
+<p><em>Hyperparameter Selection Basis:</em> Architecture hyperparameters
+(three hidden layers of <span class="math inline">\([64, 32,
+16]\)</span> units, learning rate <span class="math inline">\(\eta =
+0.001\)</span>, batch size <span class="math inline">\(32\)</span>,
+dropout rate <span class="math inline">\(0.25\)</span>, and <span
+class="math inline">\(L_2\)</span> coefficient <span
+class="math inline">\(0.001\)</span>) were selected based on standard
+empirical heuristics and conventional architectural design for tabular
+deep learning, rather than an automated hyperparameter search (such as
+grid or random search). Only the decision threshold <span
+class="math inline">\(\tau^*\)</span> was systematically grid-searched
+across candidate values on validation data.</p>
+<h4 id="42-cost-sensitive-class-weighting">4.2 Cost-Sensitive Class
+Weighting</h4>
+<p>To prevent the model from defaulting toward non-churner predictions,
+class weights were calculated using the inverse class frequency
+heuristic [8]:</p>
+<p><span class="math display">\[W_c = \frac{N_{\text{train}}}{2 \cdot
+N_c}\]</span></p>
+<p>For the training partition (<span
+class="math inline">\(N_{\text{train}} = 4,930\)</span>, <span
+class="math inline">\(N_0 = 3,622\)</span>, <span
+class="math inline">\(N_1 = 1,308\)</span>):</p>
+<ul>
+<li><strong>Majority Class (Non-Churn, <span
+class="math inline">\(c=0\)</span>):</strong> <span
+class="math display">\[W_0 = \frac{4,930}{2 \times 3,622} \approx
+\mathbf{0.6806}\]</span></li>
+<li><strong>Minority Class (Churn, <span
+class="math inline">\(c=1\)</span>):</strong> <span
+class="math display">\[W_1 = \frac{4,930}{2 \times 1,308} \approx
+\mathbf{1.8846}\]</span></li>
+</ul>
+<p>These weights rescale the loss contribution of each sample during
+backpropagation, penalizing positive-class residuals approximately <span
+class="math inline">\(2.77\times\)</span> more heavily than
+negative-class residuals.</p>
+<h4 id="43-early-stopping-dynamics-and-training-curves">4.3 Early
+Stopping Dynamics and Training Curves</h4>
+<p>Overfitting was monitored via an <code>EarlyStopping</code> callback
+tracking validation loss (<code>val_loss</code>) with:</p>
+<ul>
+<li><code>patience = 3</code>: Training halts if validation loss fails
+to achieve an improvement over the best historical loss for 3
+consecutive epochs.</li>
+<li><code>restore_best_weights = True</code>: Automatically rolls back
+parameters to the epoch with minimum validation loss.</li>
+</ul>
+<p><em>Empirical Convergence Trajectory:</em> As documented in
+<code>reports/mlp_training_history.json</code>:</p>
+<ul>
+<li>Training began at Epoch 1 (<span class="math inline">\(\text{loss} =
+0.6776\)</span>, <span class="math inline">\(\text{val\_loss} =
+0.6351\)</span>).</li>
+<li>Training loss decreased steadily across epochs, reaching <span
+class="math inline">\(0.5152\)</span> by Epoch 14.</li>
+<li>Validation loss reached its global minimum at <strong>Epoch
+11</strong> (<span class="math inline">\(\text{val\_loss} =
+\mathbf{0.5227}\)</span>, <span class="math inline">\(\text{loss} =
+0.5288\)</span>, <span class="math inline">\(\text{val\_accuracy} =
+0.7519\)</span>).</li>
+<li>Rather than plateauing, validation loss subsequently increased and
+fluctuated above the minimum: Epoch 12 (<span
+class="math inline">\(\text{val\_loss} = 0.5555\)</span>), Epoch 13
+(<span class="math inline">\(\text{val\_loss} = 0.5443\)</span>), and
+Epoch 14 (<span class="math inline">\(\text{val\_loss} =
+0.5293\)</span>).</li>
+<li>Because epochs 12, 13, and 14 yielded three consecutive
+non-improving epochs relative to Epoch 11, early stopping triggered at
+<strong>Epoch 14</strong>, and <code>restore_best_weights = True</code>
+restored the optimal parameter checkpoint from Epoch 11 into
+<code>models/mlp_churn_model.keras</code>.</li>
+</ul>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/mlp_training_history.png"
+alt="MLP Training and Validation Loss Trajectory" /><br />
+<em>Figure 1: Training and validation loss (left) and accuracy (right)
+trajectories of the ChurnIQ Multilayer Perceptron across 14 optimization
+epochs. The green dashed line and star mark the optimal validation loss
+(<span class="math inline">\(0.5227\)</span>) at Epoch 11, whose weights
+were restored upon early stopping triggered at Epoch 14 (patience =
+3).</em><br />
+<em>(Verified Path:
+<code>reports/figures/mlp_training_history.png</code>)</em></p>
+<h4 id="44-validation-based-threshold-optimization">4.4 Validation-Based
+Threshold Optimization</h4>
+<p>Standard classification workflows apply an uncalibrated default
+decision boundary at <span class="math inline">\(\tau = 0.50\)</span>.
+In class-imbalanced and class-weighted settings, <span
+class="math inline">\(\tau = 0.50\)</span> is not guaranteed to maximize
+the <span class="math inline">\(F_1\)</span>-score. Because the model
+was trained with class weights (<span class="math inline">\(W_1 \approx
+1.8846, W_0 \approx 0.6806\)</span>), predicted risk scores are
+systematically shifted to penalize minority-class errors. Furthermore,
+the <span class="math inline">\(F_1\)</span>-score represents the
+harmonic mean of precision and recall; an operating threshold calibrated
+to the empirical validation distribution balances precision and recall
+more effectively than an arbitrary 0.50 cutoff.</p>
+<p>ChurnIQ independently searches for the optimal decision threshold
+<span class="math inline">\(\tau^*\)</span> that maximizes the <span
+class="math inline">\(F_1\)</span>-score exclusively on the validation
+set:</p>
+<p><span class="math display">\[\tau^* = \arg\max_{\tau \in [0.05,
+0.95]} F_1(\tau; \mathcal{D}_{\text{val}})\]</span></p>
+<ul>
+<li><strong>Search Resolution:</strong> Grid search across 91 discrete
+candidate thresholds <span class="math inline">\(\tau \in [0.05,
+0.95]\)</span> with step <span class="math inline">\(\Delta \tau =
+0.01\)</span>.</li>
+<li><strong>Deterministic Tie-Breaking:</strong> In the event of
+identical maximal <span class="math inline">\(F_1\)</span> scores, the
+algorithm selects the <strong>lowest threshold</strong>. In customer
+retention, capturing additional churners (higher recall) is
+operationally preferred over marginal precision gains when <span
+class="math inline">\(F_1\)</span> is tied.</li>
+</ul>
+<p><em>Validation Optimization Results:</em></p>
+<ul>
+<li><strong>Logistic Regression:</strong>
+<ul>
+<li>Default Threshold (<span class="math inline">\(\tau =
+0.50\)</span>): <span class="math inline">\(F_1 = 0.6247\)</span> (<span
+class="math inline">\(\text{Precision} = 0.5067\)</span>, <span
+class="math inline">\(\text{Recall} = 0.8143\)</span>)</li>
+<li>Optimal Threshold (<span class="math inline">\(\tau^* =
+\mathbf{0.54}\)</span>): <span class="math inline">\(F_1 =
+\mathbf{0.6329}\)</span> (<span class="math inline">\(\text{Precision} =
+0.5220\)</span>, <span class="math inline">\(\text{Recall} =
+0.8036\)</span>)</li>
+<li>Optimization Delta: <span class="math inline">\(\Delta F_1 =
++0.0082\)</span></li>
+</ul></li>
+<li><strong>Multilayer Perceptron (MLP):</strong>
+<ul>
+<li>Default Threshold (<span class="math inline">\(\tau =
+0.50\)</span>): <span class="math inline">\(F_1 = 0.6289\)</span> (<span
+class="math inline">\(\text{Precision} = 0.5211\)</span>, <span
+class="math inline">\(\text{Recall} = 0.7929\)</span>)</li>
+<li>Optimal Threshold (<span class="math inline">\(\tau^* =
+\mathbf{0.46}\)</span>): <span class="math inline">\(F_1 =
+\mathbf{0.6319}\)</span> (<span class="math inline">\(\text{Precision} =
+0.5134\)</span>, <span class="math inline">\(\text{Recall} =
+0.8214\)</span>)</li>
+<li>Optimization Delta: <span class="math inline">\(\Delta F_1 =
++0.0030\)</span></li>
+</ul></li>
+</ul>
+<p>The optimal threshold metadata was frozen in
+<code>models/threshold_metadata.json</code> prior to any test set
+evaluation.</p>
+<h4 id="45-data-isolation-and-leakage-rationale">4.5 Data Isolation and
+Leakage Rationale</h4>
+<p>The test set was excluded entirely from threshold search. Selecting
+thresholds on test data constitutes subtle data snooping (evaluating
+multiple hyperparameter variants on the test set and selecting the best
+one). By freezing <span class="math inline">\(\tau^*\)</span> using only
+validation data, the subsequent test evaluation provides an unbiased
+estimate of real-world generalization.</p>
+<hr />
+<h1 id="section-5-evaluation-and-comparative-benchmark">Section 5:
+Evaluation and Comparative Benchmark</h1>
+<h4 id="51-baseline-model-formulation">5.1 Baseline Model
+Formulation</h4>
+<p>To provide an interpretable classical benchmark, an <span
+class="math inline">\(L_2\)</span>-penalized <strong>Logistic
+Regression</strong> model was trained on <span
+class="math inline">\(X_{\text{train}}\)</span> using Scikit-learn's
+L-BFGS solver with inverse regularization strength <span
+class="math inline">\(C = 1.0\)</span> and
+<code>class_weight='balanced'</code> [4].</p>
+<h4 id="52-unbiased-final-test-evaluation">5.2 Unbiased Final Test
+Evaluation</h4>
+<p>The quarantined test partition (<span class="math inline">\(n =
+1,057\)</span>, 281 ground-truth churners, 776 non-churners) was
+evaluated in an isolated single pass. Both models were benchmarked at
+their default threshold (<span class="math inline">\(\tau =
+0.50\)</span>) and their validation-optimized thresholds (<span
+class="math inline">\(\tau^* = 0.54\)</span> for Logistic Regression,
+<span class="math inline">\(\tau^* = 0.46\)</span> for MLP).</p>
+<table>
+<thead>
+<tr>
+<th>Performance Metric</th>
+<th style="text-align: center;">Logistic Regression (Default <span
+class="math inline">\(\tau = 0.50\)</span>)</th>
+<th style="text-align: center;">Logistic Regression (Optimal <span
+class="math inline">\(\tau^* = 0.54\)</span>)</th>
+<th style="text-align: center;">Multilayer Perceptron (Default <span
+class="math inline">\(\tau = 0.50\)</span>)</th>
+<th style="text-align: center;">Multilayer Perceptron (Optimal <span
+class="math inline">\(\tau^* = 0.46\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ROC-AUC</strong></td>
+<td style="text-align: center;">0.8448</td>
+<td style="text-align: center;">0.8448</td>
+<td style="text-align: center;">0.8465</td>
+<td style="text-align: center;">0.8465</td>
+</tr>
+<tr>
+<td><strong>PR-AUC (Avg Precision)</strong></td>
+<td style="text-align: center;">0.6592</td>
+<td style="text-align: center;">0.6592</td>
+<td style="text-align: center;">0.6559</td>
+<td style="text-align: center;">0.6559</td>
+</tr>
+<tr>
+<td><strong>F1-Score</strong></td>
+<td style="text-align: center;">0.6222</td>
+<td style="text-align: center;">0.6259</td>
+<td style="text-align: center;">0.6293</td>
+<td style="text-align: center;">0.6326</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td style="text-align: center;">0.5177</td>
+<td style="text-align: center;">0.5385</td>
+<td style="text-align: center;">0.5474</td>
+<td style="text-align: center;">0.5259</td>
+</tr>
+<tr>
+<td><strong>Recall (Sensitivity)</strong></td>
+<td style="text-align: center;">0.7794</td>
+<td style="text-align: center;">0.7473</td>
+<td style="text-align: center;">0.7402</td>
+<td style="text-align: center;">0.7936</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td style="text-align: center;">0.7483</td>
+<td style="text-align: center;">0.7625</td>
+<td style="text-align: center;">0.7682</td>
+<td style="text-align: center;">0.7550</td>
+</tr>
+<tr>
+<td><strong>Specificity</strong></td>
+<td style="text-align: center;">0.7371</td>
+<td style="text-align: center;">0.7680</td>
+<td style="text-align: center;">0.7784</td>
+<td style="text-align: center;">0.7410</td>
+</tr>
+<tr>
+<td><strong>False Positive Rate (FPR)</strong></td>
+<td style="text-align: center;">0.2629</td>
+<td style="text-align: center;">0.2320</td>
+<td style="text-align: center;">0.2216</td>
+<td style="text-align: center;">0.2590</td>
+</tr>
+<tr>
+<td><strong>False Negative Rate (FNR)</strong></td>
+<td style="text-align: center;">0.2206</td>
+<td style="text-align: center;">0.2527</td>
+<td style="text-align: center;">0.2598</td>
+<td style="text-align: center;">0.2064</td>
+</tr>
+<tr>
+<td><strong>True Negatives (TN)</strong></td>
+<td style="text-align: center;">572</td>
+<td style="text-align: center;">596</td>
+<td style="text-align: center;">604</td>
+<td style="text-align: center;">575</td>
+</tr>
+<tr>
+<td><strong>False Positives (FP)</strong></td>
+<td style="text-align: center;">204</td>
+<td style="text-align: center;">180</td>
+<td style="text-align: center;">172</td>
+<td style="text-align: center;">201</td>
+</tr>
+<tr>
+<td><strong>False Negatives (FN)</strong></td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">58</td>
+</tr>
+<tr>
+<td><strong>True Positives (TP)</strong></td>
+<td style="text-align: center;">219</td>
+<td style="text-align: center;">210</td>
+<td style="text-align: center;">208</td>
+<td style="text-align: center;">223</td>
+</tr>
+</tbody>
+</table>
+<h4 id="53-comparative-analysis--metric-trade-offs">5.3 Comparative
+Analysis &amp; Metric Trade-Offs</h4>
+<p>A rigorous examination of the test evaluation reveals important
+trade-offs between linear and deep architectures when evaluated at their
+respective validation-optimized operating thresholds:</p>
+<ol type="1">
+<li><strong><span class="math inline">\(F_1\)</span>-Score
+Comparison:</strong> Evaluated at validation-optimized thresholds (<span
+class="math inline">\(\tau^* = 0.46\)</span> for MLP, <span
+class="math inline">\(\tau^* = 0.54\)</span> for Logistic Regression),
+the MLP achieved a slightly higher test <span
+class="math inline">\(F_1\)</span>-score (<span
+class="math inline">\(0.6326\)</span>) than the Logistic Regression
+baseline (<span class="math inline">\(0.6259\)</span>), an absolute
+margin of <span class="math inline">\(+0.0067\)</span>.</li>
+<li><strong>Recall Advantage (Capturing Churners):</strong> Evaluated at
+validation-optimized operating points (<span
+class="math inline">\(\tau^* = 0.46\)</span> for MLP vs. <span
+class="math inline">\(\tau^* = 0.54\)</span> for Logistic Regression),
+the MLP demonstrated higher sensitivity, achieving <strong><span
+class="math inline">\(79.36\%\)</span> recall</strong> compared to <span
+class="math inline">\(74.73\%\)</span> for Logistic Regression. In
+concrete subscriber counts, the MLP correctly flagged <strong>223 out of
+281 churners</strong>, missing only 58 subscribers. Logistic Regression
+identified 210 churners, missing 71. In business retention operations,
+capturing 13 additional subscribers directly provides an opportunity to
+intervene before cancellation. However, this recall advantage is
+specific to the selected operating points; at the common default
+threshold of <span class="math inline">\(\tau = 0.50\)</span>, Logistic
+Regression exhibits higher recall (<span
+class="math inline">\(77.94\%\)</span> vs. <span
+class="math inline">\(74.02\%\)</span>).</li>
+<li><strong>Precision &amp; PR-AUC Trade-off:</strong> Logistic
+Regression achieved higher precision (<span
+class="math inline">\(53.85\%\)</span> vs. <span
+class="math inline">\(52.59\%\)</span>) and higher Area Under the
+Precision-Recall Curve (<span class="math inline">\(0.6592\)</span> vs.
+<span class="math inline">\(0.6559\)</span>). By operating at <span
+class="math inline">\(\tau^* = 0.54\)</span>, Logistic Regression was
+more conservative, producing 21 fewer false positives (180 FP vs. 201
+FP).</li>
+<li><strong>Discrimination Power (ROC-AUC):</strong> Both models
+demonstrated strong discrimination across all candidate thresholds, with
+the MLP achieving <span class="math inline">\(\text{ROC-AUC} =
+0.8465\)</span> compared to <span class="math inline">\(0.8448\)</span>
+for Logistic Regression (<span class="math inline">\(\Delta =
++0.0017\)</span>).</li>
+<li><strong>Statistical Significance &amp; Operating-Point
+Disclaimer:</strong> The observed <span
+class="math inline">\(F_1\)</span> difference (<span
+class="math inline">\(\Delta F_1 = +0.0067\)</span>) is modest. Formal
+statistical hypothesis testing (such as McNemar's test or paired
+bootstrap resampling) was not conducted. Rather than asserting absolute
+superiority, we conclude that the models exhibit complementary
+trade-offs at their optimal thresholds: the MLP provides higher churn
+capture (recall) at the expense of slightly higher false positives,
+while Logistic Regression provides slightly cleaner precision.
+Crucially, these differences primarily reflect the selected operating
+points rather than an intrinsic architectural advantage. At the common
+default threshold <span class="math inline">\(\tau = 0.50\)</span>, the
+recall/precision ordering reverses (see Table 5.2), where Logistic
+Regression achieves higher recall (<span
+class="math inline">\(77.94\%\)</span> vs. <span
+class="math inline">\(74.02\%\)</span>) and MLP achieves higher
+precision (<span class="math inline">\(54.74\%\)</span> vs. <span
+class="math inline">\(51.77\%\)</span>).</li>
+</ol>
+<h4 id="54-generalization-analysis">5.4 Generalization Analysis</h4>
+<p>Comparing validation performance to final test performance
+illuminates model stability across partitions:</p>
+<ul>
+<li><strong>Logistic Regression:</strong> Validation <span
+class="math inline">\(F_1 = 0.6329 \to\)</span> Test <span
+class="math inline">\(F_1 = 0.6259\)</span> (<span
+class="math inline">\(\Delta F_1 = -0.0070\)</span>); Validation <span
+class="math inline">\(\text{ROC-AUC} = 0.8449 \to\)</span> Test <span
+class="math inline">\(\text{ROC-AUC} = 0.8448\)</span> (<span
+class="math inline">\(\Delta = -0.0001\)</span>).</li>
+<li><strong>Multilayer Perceptron (MLP):</strong> Validation <span
+class="math inline">\(F_1 = 0.6319 \to\)</span> Test <span
+class="math inline">\(F_1 = 0.6326\)</span> (<span
+class="math inline">\(\Delta F_1 = +0.0007\)</span>); Validation <span
+class="math inline">\(\text{ROC-AUC} = 0.8454 \to\)</span> Test <span
+class="math inline">\(\text{ROC-AUC} = 0.8465\)</span> (<span
+class="math inline">\(\Delta = +0.0011\)</span>).</li>
+</ul>
+<p>Rather than claiming zero degradation for both models, the empirical
+comparison indicates that:</p>
+<ol type="1">
+<li><strong>Logistic Regression</strong> experienced a small performance
+decrease on the unseen test set (<span class="math inline">\(\Delta F_1
+= -0.0070\)</span>), reflecting expected variance when generalizing to
+unseen customer cohorts.</li>
+<li><strong>MLP</strong> remained approximately stable between
+validation and test partitions (<span class="math inline">\(\Delta F_1 =
++0.0007\)</span>). These regularization techniques—inverted dropout
+(<span class="math inline">\(p = 0.25\)</span>), hidden-layer <span
+class="math inline">\(L_2\)</span> regularization (<span
+class="math inline">\(\lambda = 0.001\)</span>), and early stopping
+(epoch 11 parameter restoration)—were incorporated to control model
+complexity and reduce overfitting, while the observed validation and
+test results indicate approximately stable MLP performance without
+evidence of severe degradation.</li>
+</ol>
+<hr />
+<h1 id="section-6-graphs-and-visualization">Section 6: Graphs and
+Visualization</h1>
+<p>All figures referenced below are verified, high-resolution diagnostic
+artifacts generated during pipeline execution and saved in
+<code>reports/figures/</code>.</p>
+<h4 id="61-performance-curves-roc-and-precision-recall-curves">6.1
+Performance Curves: ROC and Precision-Recall Curves</h4>
+<p>The receiver operating characteristic and precision-recall dynamics
+for both models across all decision thresholds on the quarantined test
+set are visualized in Figure 2:</p>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/roc_pr_curves_test.png"
+alt="Test Set ROC and PR Curves" /><br />
+<em>Figure 2: Final test set Receiver Operating Characteristic (ROC)
+curve (left) and Precision-Recall (PR) curve (right) comparing Logistic
+Regression (<span class="math inline">\(\text{ROC-AUC} =
+0.8448\)</span>, <span class="math inline">\(\text{PR-AUC} =
+0.6592\)</span>) and Multilayer Perceptron (<span
+class="math inline">\(\text{ROC-AUC} = 0.8465\)</span>, <span
+class="math inline">\(\text{PR-AUC} = 0.6559\)</span>). Optimal
+operating points (<span class="math inline">\(\tau^* = 0.54\)</span> for
+LR, <span class="math inline">\(\tau^* = 0.46\)</span> for MLP) are
+annotated on the PR curve.</em><br />
+<em>(Verified Path:
+<code>reports/figures/roc_pr_curves_test.png</code>)</em></p>
+<p><em>Interpretation:</em> The ROC curve confirms both models perform
+substantially above the non-discriminative random baseline (diagonal
+dashed line, <span class="math inline">\(\text{AUC} = 0.50\)</span>).
+The PR curve illustrates that for recall targets exceeding <span
+class="math inline">\(75\%\)</span>, the MLP curve remains competitive,
+reflecting the model's ability to maintain precision at higher
+sensitivity operating points.</p>
+<div class="page-break"></div>
+
+<h4 id="62-confusion-matrix-heatmaps">6.2 Confusion Matrix Heatmaps</h4>
+<p>The absolute error distributions on the quarantined test set at both
+default (<span class="math inline">\(\tau = 0.50\)</span>) and
+validation-optimized thresholds are illustrated in Figure 3:</p>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/confusion_matrices_test.png"
+alt="Confusion Matrices on Test Set" /><br />
+<em>Figure 3: Confusion matrices on the quarantined test set (<span
+class="math inline">\(n = 1,057\)</span>, 281 actual churners) for
+Logistic Regression (top row) and MLP (bottom row) at default (<span
+class="math inline">\(\tau = 0.50\)</span>) and validation-optimized
+operating points. Optimal thresholding shifts the balance toward true
+positive capture.</em><br />
+<em>(Verified Path:
+<code>reports/figures/confusion_matrices_test.png</code>)</em></p>
+<p><em>Interpretation:</em> Comparing the bottom-left matrix (MLP
+default, <span class="math inline">\(\tau = 0.50\)</span>) to the
+bottom-right matrix (MLP optimal, <span class="math inline">\(\tau^* =
+0.46\)</span>) demonstrates the direct impact of threshold tuning: True
+Positives increase from 208 to 223, reducing False Negatives from 73 to
+58. In practical operations, reducing missed churners by 15 accounts
+represents an opportunity to proactively intervene and potentially
+protect recurring revenue that might otherwise be lost.</p>
+<div class="page-break"></div>
+
+<h4 id="63-global-shap-feature-importance-rankings">6.3 Global SHAP
+Feature Importance Rankings</h4>
+<p>The mean absolute SHAP value distributions (<span
+class="math inline">\(\frac{1}{N} \sum |\phi_j|\)</span>) aggregated
+across parent attributes are displayed in Figure 4 and Figure 5. These
+values quantify overall attribution <strong>magnitude</strong>
+(importance), reflecting average impact without regard to sign;
+directional effects are visualized in the beeswarm plots:</p>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/shap_importance_mlp.png"
+alt="MLP Global Feature Importance" /><br />
+<em>Figure 4: Global feature importance for the Multilayer Perceptron
+(MLP) showing mean absolute SHAP values grouped by parent attribute.
+Account tenure, monthly charges, and contract type dominate model
+predictions, while internet service and online security provide
+secondary contributions.</em><br />
+<em>(Verified Path:
+<code>reports/figures/shap_importance_mlp.png</code>)</em></p>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/shap_importance_logistic.png"
+alt="Logistic Regression Global Feature Importance" /><br />
+<em>Figure 5: Global feature importance for the Logistic Regression
+baseline showing mean absolute SHAP values grouped by parent attribute.
+Cumulative TotalCharges and tenure show dominant linear
+attribution.</em><br />
+<em>(Verified Path:
+<code>reports/figures/shap_importance_logistic.png</code>)</em></p>
+<p><em>Implementation &amp; Reference Grounding:</em> SHAP explanations
+were generated via <code>shap.KernelExplainer</code> [7]. The reference
+background dataset consists of <strong>75 real training records</strong>
+(<code>N_BACKGROUND = 75</code>), stratified by churn class (55
+non-churners, 20 churners) to preserve training prevalence without
+synthetic centroid distortion. Global importance estimates were
+evaluated across <strong>200 validation records</strong>
+(<code>GLOBAL_N_EXPLAIN = 200</code>), each using 100 kernel
+evaluations. Because <code>KernelExplainer</code> approximates Shapley
+values across 46 one-hot encoded features using 100 Monte Carlo
+evaluations per sample, the resulting estimates are subject to sampling
+variance. Consequently, exact rankings among lower-attributed features
+(such as <code>gender</code>, with <span
+class="math inline">\(\bar{\phi} \approx 0.009\)</span>, or
+<code>StreamingMovies</code>) may reflect estimator noise rather than
+robust differences. Crucially, the prediction wrappers evaluate model
+probability outputs in <span class="math inline">\([0, 1]\)</span>;
+hence, SHAP values represent additive contributions in
+<strong>probability space</strong> (<span class="math inline">\(\Delta
+P\)</span>), reflecting shifts in predicted churn probability relative
+to the background expectation <span
+class="math inline">\(E[f(X)]\)</span>.</p>
+<p><em>Interpretation:</em> Both models identify account
+<code>tenure</code> as the primary predictive factor. However, the
+linear model places heavy reliance on <code>TotalCharges</code> (Rank
+#2, <span class="math inline">\(\bar{\phi} = 0.0699\)</span>), whereas
+the MLP identifies <code>MonthlyCharges</code> (Rank #2, <span
+class="math inline">\(\bar{\phi} = 0.0350\)</span>) and contract
+structure (Rank #3, <span class="math inline">\(\bar{\phi} =
+0.0288\)</span>) as dominant drivers, while <code>TotalCharges</code>
+exhibits relatively low attribution in the MLP (<span
+class="math inline">\(\bar{\phi} = 0.0061\)</span>, falling outside the
+top 10 parent features plotted in Figure 4). Features such as
+<code>InternetService</code> (Rank #4, <span
+class="math inline">\(\bar{\phi} = 0.0177\)</span>) and
+<code>OnlineSecurity</code> (Rank #6, <span
+class="math inline">\(\bar{\phi} = 0.0113\)</span>) demonstrate
+secondary contributions. This divergence may reflect the deep neural
+network's capacity to represent non-linear relationships between tenure
+and monthly charges, rather than relying predominantly on cumulative
+charges.</p>
+<div class="page-break"></div>
+
+<h4 id="64-global-shap-beeswarm-summary-plots">6.4 Global SHAP Beeswarm
+Summary Plots</h4>
+<p>The directional impact of individual subscriber features on model
+predicted churn risk scores is visualized in Figure 6 and Figure 7:</p>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/shap_summary_mlp.png"
+alt="MLP Beeswarm Summary Plot" /><br />
+<em>Figure 6: Beeswarm summary plot for the Multilayer Perceptron (MLP)
+illustrating the distribution and directionality of feature impacts on
+predicted churn risk scores. Low tenure (blue dots) strongly shifts
+predictions toward higher churn probability.</em><br />
+<em>(Verified Path:
+<code>reports/figures/shap_summary_mlp.png</code>)</em></p>
+<p><img src="file:///C:/Users/shaik/OneDrive/Desktop/ChurnIQ/reports/figures/shap_summary_logistic.png"
+alt="Logistic Regression Beeswarm Summary Plot" /><br />
+<em>Figure 7: Beeswarm summary plot for the Logistic Regression baseline
+showing feature value distributions and their directional impact on
+predicted churn probability.</em><br />
+<em>(Verified Path:
+<code>reports/figures/shap_summary_logistic.png</code>)</em></p>
+<p><em>Interpretation:</em> In the beeswarm plots, each dot represents
+an individual subscriber from the 200 validation instances. Dot color
+indicates feature value (pink/red = high, blue = low), and horizontal
+positioning indicates SHAP attribution in probability space (<span
+class="math inline">\(\Delta P\)</span>). Blue dots (low tenure)
+extending to the right confirm that low tenure strongly elevates the
+model's predicted churn risk score, while high monthly charges also
+shift predictions toward churn.</p>
+<hr />
+<h1 id="section-7-interpretation-and-conclusion">Section 7:
+Interpretation and Conclusion</h1>
+<h4 id="71-interpretation-of-associative-findings">7.1 Interpretation of
+Associative Findings</h4>
+<p>The empirical results confirm that model churn predictions are
+primarily associated with contracting structure, tenure, and ongoing
+recurring charges:</p>
+<ol type="1">
+<li><strong>Contract Structure:</strong> Month-to-month contracts
+exhibit high positive attributions toward predicted churn. In contrast,
+one-year and two-year commitments associate with substantial negative
+churn attributions. In subscription services, month-to-month terms lack
+long-term contractual commitments, leaving subscribers free to cancel at
+any billing cycle.</li>
+<li><strong>Tenure Dynamics:</strong> Account tenure exhibits the
+largest-magnitude attribution overall (<span
+class="math inline">\(\bar{\phi} = 0.1091\)</span> in MLP). As shown in
+the beeswarm summary plots, high tenure pushes predictions toward lower
+churn risk, whereas low tenure strongly elevates predicted churn risk
+scores across both models.</li>
+<li><strong>Monthly Spend vs. Cumulative Spend:</strong> In the MLP,
+high recurring <code>MonthlyCharges</code> consistently elevates
+predicted churn probability (Rank #2, <span
+class="math inline">\(\bar{\phi} = 0.0350\)</span>), whereas cumulative
+<code>TotalCharges</code> exhibits much lower attribution (<span
+class="math inline">\(\bar{\phi} = 0.0061\)</span>, outside the top 10
+parent features plotted in Figure 4). The neural network's feature
+attributions indicate that ongoing recurring spend is a substantially
+stronger predictive signal than historical cumulative billings.</li>
+<li><strong>Internet Service Type:</strong> Subscribers enrolled in
+Fiber optic internet display higher predicted churn scores than DSL
+subscribers. In the dataset (full dataset; descriptive only, not used
+for fitting), Fiber optic plans average <strong>$91.50/month</strong>
+(<span class="math inline">\(N = 3,096\)</span>, std = $12.66), compared
+to <strong>$58.10/month</strong> for DSL (<span class="math inline">\(N
+= 2,421\)</span>, std = $16.26) and <strong>$21.08/month</strong> for
+customers with no internet service (<span class="math inline">\(N =
+1,526\)</span>, std = $2.16). This higher ongoing monthly spend
+associates with elevated churn propensity in model attributions.</li>
+<li><strong>Support and Security Bundling:</strong> The absence of
+add-ons such as <code>OnlineSecurity</code> and <code>TechSupport</code>
+associates with elevated churn scores, whereas bundled add-on services
+correlate with lower predicted churn.</li>
+</ol>
+<h4 id="72-explainable-ai-shap-and-causality-disclaimer">7.2 Explainable
+AI (SHAP) and Causality Disclaimer</h4>
+<p>To ensure operational interpretability, ChurnIQ implemented
+model-agnostic <strong>SHAP (SHapley Additive exPlanations)</strong> [7]
+using <code>KernelExplainer</code>. The explainer was seeded with a
+background set of <strong>75 real customer records</strong> drawn from
+the training partition and stratified by target class (55 non-churners,
+20 churners), avoiding the distortion introduced by synthetic <span
+class="math inline">\(k\)</span>-means centroids.</p>
+<blockquote>
+<p><strong>Critical Causality Disclaimer &amp; Methodological
+Limitations:</strong></p>
+<ol type="1">
+<li><strong>Association vs. Causality:</strong> SHAP feature
+attributions measure <strong>model sensitivity and associative
+importance</strong>, not real-world causality. A positive SHAP
+attribution for <code>PaperlessBilling</code> indicates that paperless
+billing statistically increased the model's predicted churn score. It
+does <strong>not</strong> prove that paperless billing causes customer
+defection, nor does it imply that reverting customers to paper invoicing
+will prevent cancellations.</li>
+<li><strong>Correlated Feature Distortion:</strong> In tabular data
+containing correlated predictors (e.g., <code>tenure</code> and
+<code>TotalCharges</code>, or mutually exclusive one-hot categories),
+<code>KernelExplainer</code> samples perturbations under an independence
+assumption. This can evaluate off-manifold feature combinations,
+potentially distributing credit arbitrarily across correlated inputs and
+introducing sampling variance into feature rankings. Findings must be
+validated through domain expertise and controlled A/B testing.</li>
+</ol>
+</blockquote>
+<h4
+id="73-practical-business-relevance-decoupled-risk-stratification">7.3
+Practical Business Relevance: Decoupled Risk Stratification</h4>
+<p>A binary classification threshold (<span class="math inline">\(\tau^*
+= 0.46\)</span>) provides a statistical cutoff for computing <span
+class="math inline">\(F_1\)</span>, but marketing and customer care
+teams cannot treat all flagged customers uniformly. Spending significant
+resources on personal retention outreach for a subscriber with
+borderline churn risk may be economically inefficient.</p>
+<p>ChurnIQ resolves this by decoupling the statistical decision
+threshold from an operational <strong>3-Tier Business Risk
+Stratification Engine</strong>. While both models can be selected in the
+dashboard [9], the <strong>Multilayer Perceptron (MLP)</strong> serves
+as the default engine in <code>src/inference.py</code>:</p>
+<p><span class="math display">\[\text{Predicted Risk Score } P =
+\sigma(z)\]</span> <span class="math display">\[\begin{cases}
+P &lt; 0.30 &amp; \implies \mathbf{Low\ Risk} \\
+0.30 \le P &lt; 0.70 &amp; \implies \mathbf{Medium\ Risk} \\
+P \ge 0.70 &amp; \implies \mathbf{High\ Risk}
+\end{cases}\]</span></p>
+<ul>
+<li><strong>Low Risk (<span class="math inline">\(P &lt;
+0.30\)</span>):</strong> Routine service monitoring, automated renewal
+confirmation.</li>
+<li><strong>Medium Risk (<span class="math inline">\(0.30 \le P &lt;
+0.70\)</span>):</strong> Digital engagement nudges, loyalty perks,
+feature adoption prompts.</li>
+<li><strong>High Risk (<span class="math inline">\(P \ge
+0.70\)</span>):</strong> Immediate outbound retention specialist call,
+customized contract incentives.</li>
+</ul>
+<p><em>Validation Set Empirical Distribution (<span
+class="math inline">\(n = 1,056\)</span>):</em></p>
+<ul>
+<li><strong>Low Risk (<span class="math inline">\(P &lt;
+0.30\)</span>):</strong> 464 customers (<span
+class="math inline">\(43.9\%\)</span>). Actual churn rate: <strong><span
+class="math inline">\(5.2\%\)</span></strong>. This segment has a
+relatively low observed churn rate of 5.2%.</li>
+<li><strong>Medium Risk (<span class="math inline">\(0.30 \le P &lt;
+0.70\)</span>):</strong> 352 customers (<span
+class="math inline">\(33.3\%\)</span>). Actual churn rate: <strong><span
+class="math inline">\(29.0\%\)</span></strong>. Ideal cohort for
+low-cost digital incentives and satisfaction surveys.</li>
+<li><strong>High Risk (<span class="math inline">\(P \ge
+0.70\)</span>):</strong> 240 customers (<span
+class="math inline">\(22.7\%\)</span>). Actual churn rate: <strong><span
+class="math inline">\(64.2\%\)</span></strong>. This segment has the
+highest observed churn rate at 64.2%, making it a priority for further
+retention assessment.</li>
+</ul>
+<h4 id="74-system-verification-and-production-readiness">7.4 System
+Verification and Production Readiness</h4>
+<p>The complete ChurnIQ platform is verified by an automated test suite
+comprising <strong>85 tests</strong> built with pytest [10] across unit
+and integration categories:</p>
+<ul>
+<li>Data pipeline integrity, whitespace handling, and leakage checks
+(<code>test_data_pipeline.py</code>).</li>
+<li>Baseline Logistic Regression and MLP architecture dimension
+validation (<code>test_baseline_model.py</code>,
+<code>test_neural_network.py</code>).</li>
+<li>Validation threshold optimization and deterministic tie-breaking
+(<code>test_threshold_optimizer.py</code>).</li>
+<li>Isolated test set evaluation and metric replication
+(<code>test_evaluation.py</code>).</li>
+<li>SHAP feature grouping and local explanation generation
+(<code>test_explainability.py</code>).</li>
+<li>Real-time single-record and batch inference engines
+(<code>test_inference.py</code>).</li>
+<li>Interactive 7-page Streamlit dashboard visual components
+(<code>test_app.py</code>).</li>
+<li>Pipeline orchestrator CLI, dependency verification, and dry-run
+safety (<code>test_train.py</code>).</li>
+</ul>
+<p><strong>Test Execution:</strong> 85 passed in 5.06 seconds (<span
+class="math inline">\(100\%\)</span> pass rate, exit code 0).</p>
+<div class="page-break"></div>
+
+<h4 id="75-limitations-and-future-research-directions">7.5 Limitations
+and Future Research Directions</h4>
+<ol type="1">
+<li><strong>Cross-Sectional vs. Longitudinal Data:</strong> The IBM
+Telco dataset is a static cross-sectional snapshot. In enterprise
+production, telecom customer behavior is dynamic. Incorporating
+longitudinal time-series data (e.g., month-over-month data usage drops,
+billing dispute frequency, network quality degradations) would provide
+stronger leading indicators.</li>
+<li><strong>Financial Utility Optimization:</strong> The current system
+optimizes statistical <span class="math inline">\(F_1\)</span>. Future
+enhancements should incorporate financial utility modeling under
+explicit operational assumptions.
+<ul>
+<li><strong>Absolute Net Financial Utility (<span
+class="math inline">\(\mathcal{U}_{\text{abs}}\)</span>):</strong> In an
+operational setting where an intervention offer of cost <span
+class="math inline">\(C_{\text{offer}}\)</span> is extended to all
+predicted positives (<span class="math inline">\(\text{TP} +
+\text{FP}\)</span>), with customer acceptance rate <span
+class="math inline">\(p_{\text{accept}}\)</span> and customer lifetime
+value <span class="math inline">\(\text{CLV}\)</span>: <span
+class="math display">\[\mathcal{U}_{\text{abs}} = -\text{TP} \cdot
+[C_{\text{offer}} + (1 - p_{\text{accept}}) \cdot \text{CLV}] -
+\text{FP} \cdot C_{\text{offer}} - \text{FN} \cdot \text{CLV}\]</span>
+Here, each true positive receives an intervention costing <span
+class="math inline">\(C_{\text{offer}}\)</span> and churns with
+probability <span class="math inline">\((1 - p_{\text{accept}})\)</span>
+(incurring lost <span class="math inline">\(\text{CLV}\)</span>), each
+false positive incurs unnecessary offer cost <span
+class="math inline">\(C_{\text{offer}}\)</span>, and each false negative
+churns unmitigated, forfeiting full <span
+class="math inline">\(\text{CLV}\)</span>.</li>
+<li><strong>Incremental Utility (<span class="math inline">\(\Delta
+\mathcal{U}\)</span> over no-intervention baseline):</strong> In the
+absence of an intervention policy, all actual churners (<span
+class="math inline">\(\text{TP} + \text{FN}\)</span>) leave,
+establishing the default baseline utility <span
+class="math inline">\(\mathcal{U}_{\text{baseline}} = -(\text{TP} +
+\text{FN}) \cdot \text{CLV}\)</span>. The incremental financial gain
+generated by the intervention model is: <span
+class="math display">\[\Delta \mathcal{U} = \mathcal{U}_{\text{abs}} -
+\mathcal{U}_{\text{baseline}} = \text{TP} \cdot (p_{\text{accept}} \cdot
+\text{CLV} - C_{\text{offer}}) - \text{FP} \cdot
+C_{\text{offer}}\]</span> Subtracting <span
+class="math inline">\(\mathcal{U}_{\text{baseline}}\)</span> cancels the
+unmitigated churn penalty across <span
+class="math inline">\(\text{FN}\)</span> and non-preventable <span
+class="math inline">\(\text{TP}\)</span>, cleanly isolating the net
+profit from retained customers minus intervention expenses. These
+formulations assume constant <span
+class="math inline">\(\text{CLV}\)</span>, uniform incentive cost <span
+class="math inline">\(C_{\text{offer}}\)</span>, and treat false
+positives as incurring pure outreach cost without retention
+benefit.</li>
+</ul></li>
+<li><strong>Uplift Modeling:</strong> Standard classification predicts
+who is likely to leave, but cannot determine who will respond favorably
+to an intervention. Uplift modeling (estimating Individual Treatment
+Effects) would distinguish "persuadables" from "lost causes" and
+"sleeping dogs."</li>
+</ol>
+<h4 id="76-conclusion-and-model-comparison-summary">7.6 Conclusion and
+Model Comparison Summary</h4>
+<p>The ChurnIQ project demonstrates an end-to-end, mathematically
+disciplined approach to applied machine learning in telecommunications.
+By eliminating data leakage, designing a regularized 5,633-parameter MLP
+with Keras 3 and PyTorch, optimizing decision thresholds on validation
+data, and providing model-agnostic SHAP interpretability with decoupled
+risk tiers, the system bridges statistical rigor with business
+utility.</p>
+<p><em>Comparative Summary (MLP vs. Logistic Regression Across Operating
+Thresholds):</em></p>
+<ul>
+<li><strong>Precision-Recall Dynamics:</strong> Both models exhibit
+nearly overlapping Precision-Recall curves (<span
+class="math inline">\(\text{PR-AUC} = 0.6592\)</span> for Logistic
+Regression vs. <span class="math inline">\(0.6559\)</span> for MLP) and
+near-identical global discrimination (<span
+class="math inline">\(\text{ROC-AUC} = 0.8448\)</span> vs. <span
+class="math inline">\(0.8465\)</span>).</li>
+<li><strong>Threshold-Driven Trade-offs:</strong> At
+validation-optimized thresholds, the MLP (<span
+class="math inline">\(\tau^* = 0.46\)</span>) achieves test <span
+class="math inline">\(F_1 = 0.6326\)</span> with higher recall (<span
+class="math inline">\(79.36\%\)</span>, capturing 223 of 281 churners),
+while Logistic Regression achieves higher precision (53.85%), generating
+180 false positives compared with 201 for the MLP (test <span
+class="math inline">\(F_1 = 0.6259\)</span> at <span
+class="math inline">\(\tau^* = 0.54\)</span>). However, this
+recall/precision difference primarily reflects operating point selection
+along overlapping PR curves rather than intrinsic architectural
+sensitivity. At the common default threshold of <span
+class="math inline">\(\tau = 0.50\)</span>, Logistic Regression exhibits
+higher recall (<span class="math inline">\(77.94\%\)</span> vs. <span
+class="math inline">\(74.02\%\)</span>), while the MLP exhibits higher
+precision (<span class="math inline">\(54.74\%\)</span> vs. <span
+class="math inline">\(51.77\%\)</span>).</li>
+<li><strong>Synthesis:</strong> The overall test <span
+class="math inline">\(F_1\)</span> difference is modest (<span
+class="math inline">\(\Delta F_1 = +0.0067\)</span>). Rather than one
+model being categorically superior for churn capture or precision,
+operating trade-offs are governed primarily by threshold calibration.
+Either model can be tuned along the PR frontier to prioritize recall or
+precision based on organizational retention budgets and intervention
+economics.</li>
+</ul>
+<hr />
+<h1 id="references">References</h1>
+<h3 id="10-academic-and-official-technical-references">10 Academic and
+Official Technical References</h3>
+<ol type="1">
+<li><strong>Dataset Source:</strong> IBM Cognitive Class. (2018).
+<em>Telco Customer Churn Dataset: Focused Customer Retention
+Programs</em>. Available via Kaggle:
+<code>https://www.kaggle.com/datasets/blastchar/telco-customer-churn</code>.</li>
+<li><strong>Deep Learning Framework:</strong> Chollet, F., et al.
+(2023). <em>Keras 3: Deep Learning for Everyone</em>.
+<code>https://keras.io/</code>.</li>
+<li><strong>Underlying Tensor Backend:</strong> Paszke, A., Gross, S.,
+Massa, F., Lerer, A., Bradbury, J., Chanan, G., ... &amp; Chintala, S.
+(2019). PyTorch: An Imperative Style, High-Performance Deep Learning
+Library. <em>Advances in Neural Information Processing Systems (NeurIPS
+32)</em>, 8024-8035.</li>
+<li><strong>Machine Learning Toolkit:</strong> Pedregosa, F., Varoquaux,
+G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... &amp;
+Duchesnay, É. (2011). Scikit-learn: Machine Learning in Python.
+<em>Journal of Machine Learning Research (JMLR)</em>, 12,
+2825-2830.</li>
+<li><strong>Adam Optimization:</strong> Kingma, D. P., &amp; Ba, J.
+(2014). Adam: A Method for Stochastic Optimization. <em>arXiv preprint
+arXiv:1412.6980</em>. Presented at ICLR 2015.</li>
+<li><strong>Dropout Regularization:</strong> Srivastava, N., Hinton, G.,
+Krizhevsky, A., Sutskever, I., &amp; Salakhutdinov, R. (2014). Dropout:
+A Simple Way to Prevent Neural Networks from Overfitting. <em>Journal of
+Machine Learning Research (JMLR)</em>, 15(1), 1929-1958.</li>
+<li><strong>Explainable AI (SHAP):</strong> Lundberg, S. M., &amp; Lee,
+S. I. (2017). A Unified Approach to Interpreting Model Predictions.
+<em>Advances in Neural Information Processing Systems (NeurIPS 30)</em>,
+4765-4774.</li>
+<li><strong>Class Imbalance &amp; Performance Metrics:</strong> He, H.,
+&amp; Garcia, E. A. (2009). Learning from Imbalanced Data. <em>IEEE
+Transactions on Knowledge and Data Engineering (TKDE)</em>, 21(9),
+1263-1284.</li>
+<li><strong>Interactive Application Framework:</strong> Streamlit Inc.
+(2024). <em>Streamlit: The fastest way to build and share data
+apps</em>. <code>https://streamlit.io/</code>.</li>
+<li><strong>Software Testing Standard:</strong> Krekel, H., et al.
+(2024). <em>pytest: Simple powerful testing with Python</em>.
+<code>https://pytest.org/</code>.</li>
+</ol>
+</body>
+</html>

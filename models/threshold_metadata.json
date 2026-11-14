@@ -1,0 +1,30 @@
+{
+  "note": "Optimal thresholds selected by maximising F1 on validation predictions only. Test partition was never accessed during optimization.",
+  "tie_breaking_rule": "Lowest threshold among all maximisers of validation F1.",
+  "threshold_grid": {
+    "min": 0.05,
+    "max": 0.95,
+    "step": 0.01
+  },
+  "models": {
+    "logistic_regression": {
+      "optimal_threshold": 0.54,
+      "default_threshold": 0.5,
+      "optimal_f1": 0.6329,
+      "default_f1": 0.6247,
+      "f1_gain": 0.0082
+    },
+    "mlp": {
+      "optimal_threshold": 0.46,
+      "default_threshold": 0.5,
+      "optimal_f1": 0.6319,
+      "default_f1": 0.6289,
+      "f1_gain": 0.003
+    }
+  },
+  "risk_boundaries": {
+    "low_threshold": 0.3,
+    "high_threshold": 0.7,
+    "independence_note": "Risk category boundaries are independent of model classification thresholds."
+  }
+}

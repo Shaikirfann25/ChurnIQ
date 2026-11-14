@@ -1,0 +1,40 @@
+{
+  "model_name": "Logistic Regression Baseline",
+  "evaluation_partition": "validation",
+  "threshold": 0.5,
+  "roc_auc": 0.8449,
+  "pr_auc": 0.6314,
+  "precision": 0.5067,
+  "recall": 0.8143,
+  "f1_score": 0.6247,
+  "confusion_matrix": {
+    "true_negatives": 554,
+    "false_positives": 222,
+    "false_negatives": 52,
+    "true_positives": 228,
+    "matrix_2x2": [
+      [
+        554,
+        222
+      ],
+      [
+        52,
+        228
+      ]
+    ]
+  },
+  "sample_counts": {
+    "total_samples": 1056,
+    "actual_churn_positives": 280,
+    "actual_churn_negatives": 776,
+    "predicted_positives": 450,
+    "predicted_negatives": 606
+  },
+  "hyperparameters": {
+    "max_iter": 1000,
+    "C": 1.0,
+    "class_weight": "balanced",
+    "solver": "lbfgs",
+    "iterations_to_converge": 43
+  }
+}

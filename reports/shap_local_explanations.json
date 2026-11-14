@@ -1,0 +1,839 @@
+{
+  "note": "SHAP local explanations show which features most influenced each prediction. SHAP explains MODEL BEHAVIOUR, not actual causes of customer churn.",
+  "logistic_regression": {
+    "tp": {
+      "meta": {
+        "customerID": "1809-DMJHQ",
+        "val_row_idx": 172,
+        "actual_churn": 1,
+        "predicted": 1,
+        "churn_prob": 0.5032
+      },
+      "shap_encoded": {
+        "tenure": 0.236526,
+        "TotalCharges": -0.093816,
+        "InternetService_DSL": -0.065431,
+        "MonthlyCharges": 0.055543,
+        "Contract_Month-to-month": 0.050707,
+        "InternetService_Fiber optic": -0.049915,
+        "Dependents_Yes": -0.03325,
+        "Contract_Two year": 0.030204,
+        "PaperlessBilling_No": -0.029338,
+        "StreamingMovies_Yes": -0.022706,
+        "StreamingMovies_No": -0.020637,
+        "MultipleLines_No": -0.01957,
+        "OnlineSecurity_No": 0.018089,
+        "TechSupport_No": 0.01784,
+        "PaymentMethod_Electronic check": -0.016992
+      },
+      "shap_original": [
+        {
+          "original_feature": "tenure",
+          "shap_sum": 0.236526
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": -0.107209
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": -0.093816
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": 0.086009
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": 0.055543
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": -0.043285
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": -0.040764
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": 0.03463
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": -0.034164
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.033281
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": -0.026385
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.021495
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": -0.020743
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.014873
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": -0.0136
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": -0.009957
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": -0.009464
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.005593
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": 0.005549
+        }
+      ]
+    },
+    "tn": {
+      "meta": {
+        "customerID": "7398-LXGYX",
+        "val_row_idx": 787,
+        "actual_churn": 0,
+        "predicted": 0,
+        "churn_prob": 0.4994
+      },
+      "shap_encoded": {
+        "tenure": -0.111011,
+        "TotalCharges": 0.058521,
+        "MonthlyCharges": -0.057624,
+        "InternetService_Fiber optic": 0.053383,
+        "Contract_Month-to-month": 0.053007,
+        "Contract_Two year": 0.029736,
+        "StreamingMovies_Yes": -0.027943,
+        "InternetService_DSL": 0.026341,
+        "PaymentMethod_Credit card (automatic)": -0.024686,
+        "StreamingMovies_No": -0.02446,
+        "OnlineSecurity_No": -0.022187,
+        "OnlineSecurity_Yes": -0.021558,
+        "TechSupport_No": 0.019644,
+        "MultipleLines_No": 0.017447,
+        "PaperlessBilling_No": 0.01692
+      },
+      "shap_original": [
+        {
+          "original_feature": "tenure",
+          "shap_sum": -0.111011
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": 0.089223
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": 0.087604
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": 0.058521
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": -0.057624
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": -0.041682
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.036228
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": -0.034737
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": 0.028784
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": -0.023382
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": 0.018617
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": -0.017195
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.016644
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.016105
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": 0.008122
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": 0.006904
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": -0.003891
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": 0.001328
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": 0.000642
+        }
+      ]
+    },
+    "fp": {
+      "meta": {
+        "customerID": "2924-KHUVI",
+        "val_row_idx": 306,
+        "actual_churn": 0,
+        "predicted": 1,
+        "churn_prob": 0.5001
+      },
+      "shap_encoded": {
+        "tenure": -0.195374,
+        "TotalCharges": 0.139818,
+        "MonthlyCharges": -0.092404,
+        "Contract_Month-to-month": -0.072197,
+        "InternetService_Fiber optic": 0.045904,
+        "Contract_Two year": 0.030834,
+        "PaymentMethod_Electronic check": 0.030617,
+        "InternetService_DSL": 0.025941,
+        "OnlineSecurity_Yes": -0.025396,
+        "StreamingMovies_Yes": 0.023358,
+        "TechSupport_No": 0.020864,
+        "OnlineSecurity_No": -0.02037,
+        "StreamingTV_Yes": 0.017999,
+        "PaperlessBilling_No": 0.01787,
+        "DeviceProtection_No internet service": 0.017166
+      },
+      "shap_original": [
+        {
+          "original_feature": "tenure",
+          "shap_sum": -0.195374
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": 0.139818
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": -0.092404
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": 0.07887
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": -0.056489
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": 0.051021
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": 0.046474
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.043082
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": -0.040118
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": 0.031961
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": 0.029975
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": 0.024046
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.017112
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": -0.008661
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.008319
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": 0.008289
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": 0.003828
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": 0.003601
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.003133
+        }
+      ]
+    },
+    "fn": {
+      "meta": {
+        "customerID": "8450-JOVAH",
+        "val_row_idx": 885,
+        "actual_churn": 1,
+        "predicted": 0,
+        "churn_prob": 0.4898
+      },
+      "shap_encoded": {
+        "tenure": 0.248125,
+        "TotalCharges": -0.098778,
+        "InternetService_DSL": -0.061885,
+        "InternetService_Fiber optic": -0.056241,
+        "Contract_Month-to-month": 0.039809,
+        "PaperlessBilling_No": -0.032947,
+        "Dependents_Yes": -0.028071,
+        "StreamingMovies_No": -0.025069,
+        "OnlineSecurity_Yes": -0.023871,
+        "Contract_Two year": 0.021962,
+        "MonthlyCharges": 0.019768,
+        "MultipleLines_No": 0.018734,
+        "TechSupport_No": 0.017814,
+        "StreamingMovies_Yes": -0.017796,
+        "PaymentMethod_Bank transfer (automatic)": 0.017418
+      },
+      "shap_original": [
+        {
+          "original_feature": "tenure",
+          "shap_sum": 0.248125
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": -0.108235
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": -0.098778
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": 0.066829
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": -0.042818
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": -0.037114
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": -0.036423
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.034808
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": -0.0296
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": 0.026484
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": 0.019768
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.016083
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": -0.01319
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.009647
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": 0.00951
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": 0.009225
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.005477
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": 0.000697
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": 5.2e-05
+        }
+      ]
+    }
+  },
+  "mlp": {
+    "tp": {
+      "meta": {
+        "customerID": "7593-JNWRU",
+        "val_row_idx": 808,
+        "actual_churn": 1,
+        "predicted": 1,
+        "churn_prob": 0.5015
+      },
+      "shap_encoded": {
+        "tenure": 0.148219,
+        "InternetService_DSL": -0.070013,
+        "Contract_Month-to-month": 0.04574,
+        "MonthlyCharges": -0.028439,
+        "Contract_Two year": 0.02705,
+        "PaymentMethod_Electronic check": -0.024376,
+        "Dependents_No": -0.023597,
+        "Dependents_Yes": -0.023338,
+        "gender_Male": -0.021535,
+        "StreamingMovies_No": -0.020174,
+        "PaymentMethod_Bank transfer (automatic)": -0.020025,
+        "gender_Female": 0.019868,
+        "InternetService_Fiber optic": -0.018754,
+        "OnlineSecurity_Yes": 0.017369,
+        "Partner_Yes": -0.015214
+      },
+      "shap_original": [
+        {
+          "original_feature": "tenure",
+          "shap_sum": 0.148219
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": 0.080862
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": -0.07739
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": -0.046935
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": 0.034839
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": -0.03405
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.030954
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": -0.028439
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": -0.024784
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.014104
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": 0.013143
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": 0.012841
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": -0.011867
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.010998
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": -0.010463
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.01043
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": 0.00813
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": -0.001667
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": -0.000801
+        }
+      ]
+    },
+    "tn": {
+      "meta": {
+        "customerID": "7251-LJBQN",
+        "val_row_idx": 771,
+        "actual_churn": 0,
+        "predicted": 0,
+        "churn_prob": 0.4963
+      },
+      "shap_encoded": {
+        "MonthlyCharges": 0.067654,
+        "tenure": -0.065654,
+        "Contract_Month-to-month": -0.04225,
+        "Contract_One year": -0.039425,
+        "Contract_Two year": 0.027175,
+        "InternetService_DSL": 0.025092,
+        "PaymentMethod_Electronic check": -0.021668,
+        "InternetService_Fiber optic": 0.021568,
+        "Partner_No": -0.018487,
+        "OnlineSecurity_No": 0.018081,
+        "TechSupport_Yes": -0.017953,
+        "PaperlessBilling_Yes": 0.016735,
+        "SeniorCitizen_0": 0.015764,
+        "PaymentMethod_Credit card (automatic)": -0.015221,
+        "StreamingMovies_Yes": 0.014848
+      },
+      "shap_original": [
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": 0.067654
+        },
+        {
+          "original_feature": "tenure",
+          "shap_sum": -0.065654
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": -0.0545
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": 0.05147
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": 0.035867
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": 0.032313
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": -0.029218
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": 0.027716
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": 0.026544
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": -0.025416
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": 0.019089
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": 0.015955
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": 0.015406
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.010243
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": -0.0097
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.008114
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": -0.006758
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": -0.004558
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.000641
+        }
+      ]
+    },
+    "fp": {
+      "meta": {
+        "customerID": "2378-HTWFW",
+        "val_row_idx": 245,
+        "actual_churn": 0,
+        "predicted": 1,
+        "churn_prob": 0.5019
+      },
+      "shap_encoded": {
+        "Contract_Month-to-month": 0.042233,
+        "MonthlyCharges": 0.041713,
+        "tenure": -0.036056,
+        "OnlineSecurity_Yes": -0.03127,
+        "Contract_Two year": 0.02624,
+        "PaperlessBilling_Yes": -0.023266,
+        "InternetService_DSL": 0.021378,
+        "PaperlessBilling_No": -0.019753,
+        "PaymentMethod_Electronic check": -0.018751,
+        "OnlineSecurity_No": -0.01835,
+        "gender_Female": 0.017555,
+        "TechSupport_No": 0.016759,
+        "SeniorCitizen_1": 0.016471,
+        "Partner_No": -0.015151,
+        "PaymentMethod_Credit card (automatic)": -0.014303
+      },
+      "shap_original": [
+        {
+          "original_feature": "Contract",
+          "shap_sum": 0.07347
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": -0.047968
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": 0.043241
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": -0.043019
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": 0.041713
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.037019
+        },
+        {
+          "original_feature": "tenure",
+          "shap_sum": -0.036056
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": 0.027698
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": -0.024494
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": 0.020047
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": -0.014266
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": 0.01396
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": 0.011268
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": 0.010198
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": -0.009932
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": -0.008313
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.006287
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.005711
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": 0.005179
+        }
+      ]
+    },
+    "fn": {
+      "meta": {
+        "customerID": "2108-YKQTY",
+        "val_row_idx": 217,
+        "actual_churn": 1,
+        "predicted": 0,
+        "churn_prob": 0.4973
+      },
+      "shap_encoded": {
+        "tenure": 0.138901,
+        "InternetService_DSL": -0.055048,
+        "Contract_Month-to-month": 0.049023,
+        "OnlineBackup_Yes": -0.030707,
+        "Contract_Two year": 0.029355,
+        "PaperlessBilling_Yes": -0.028812,
+        "PaymentMethod_Electronic check": -0.021835,
+        "StreamingMovies_No": -0.021621,
+        "PaymentMethod_Credit card (automatic)": -0.021222,
+        "PaperlessBilling_No": -0.018843,
+        "MonthlyCharges": -0.017837,
+        "OnlineSecurity_Yes": 0.017582,
+        "InternetService_Fiber optic": -0.017412,
+        "Partner_Yes": 0.017406,
+        "gender_Female": -0.015694
+      },
+      "shap_original": [
+        {
+          "original_feature": "tenure",
+          "shap_sum": 0.138901
+        },
+        {
+          "original_feature": "Contract",
+          "shap_sum": 0.083567
+        },
+        {
+          "original_feature": "InternetService",
+          "shap_sum": -0.06383
+        },
+        {
+          "original_feature": "PaperlessBilling",
+          "shap_sum": -0.047655
+        },
+        {
+          "original_feature": "OnlineSecurity",
+          "shap_sum": 0.037221
+        },
+        {
+          "original_feature": "PaymentMethod",
+          "shap_sum": -0.032915
+        },
+        {
+          "original_feature": "OnlineBackup",
+          "shap_sum": -0.030707
+        },
+        {
+          "original_feature": "DeviceProtection",
+          "shap_sum": 0.023996
+        },
+        {
+          "original_feature": "StreamingMovies",
+          "shap_sum": -0.022047
+        },
+        {
+          "original_feature": "TechSupport",
+          "shap_sum": 0.020822
+        },
+        {
+          "original_feature": "MonthlyCharges",
+          "shap_sum": -0.017837
+        },
+        {
+          "original_feature": "MultipleLines",
+          "shap_sum": -0.012075
+        },
+        {
+          "original_feature": "StreamingTV",
+          "shap_sum": 0.011
+        },
+        {
+          "original_feature": "TotalCharges",
+          "shap_sum": 0.009808
+        },
+        {
+          "original_feature": "Dependents",
+          "shap_sum": 0.009334
+        },
+        {
+          "original_feature": "SeniorCitizen",
+          "shap_sum": -0.008821
+        },
+        {
+          "original_feature": "Partner",
+          "shap_sum": 0.004792
+        },
+        {
+          "original_feature": "gender",
+          "shap_sum": -0.004456
+        },
+        {
+          "original_feature": "PhoneService",
+          "shap_sum": -0.003351
+        }
+      ]
+    }
+  }
+}

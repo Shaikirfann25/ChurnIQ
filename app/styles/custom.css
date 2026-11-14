@@ -1,0 +1,80 @@
+/* ChurnIQ – Custom Streamlit Styles */
+
+/* ── Page & header ─────────────────────────────────────────── */
+.main { background-color: #0e1117; }
+
+h1.churniq-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.2rem;
+}
+
+/* ── Metric cards ───────────────────────────────────────────── */
+.metric-card {
+    background: linear-gradient(135deg, #1e2130 0%, #252940 100%);
+    border: 1px solid #3a3f5c;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+}
+.metric-card .metric-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #667eea;
+}
+.metric-card .metric-label {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+}
+.metric-card .metric-delta {
+    font-size: 0.82rem;
+    margin-top: 0.4rem;
+}
+.metric-card .metric-delta.positive { color: #34d399; }
+.metric-card .metric-delta.negative { color: #f87171; }
+
+/* ── Risk badges ────────────────────────────────────────────── */
+.risk-badge {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+}
+.risk-badge.High   { background: #3b1212; color: #f87171; border: 1.5px solid #f87171; }
+.risk-badge.Medium { background: #2d2412; color: #fbbf24; border: 1.5px solid #fbbf24; }
+.risk-badge.Low    { background: #0f2d1a; color: #34d399; border: 1.5px solid #34d399; }
+
+/* ── Info / warning banners ─────────────────────────────────── */
+.shap-disclaimer {
+    background: #1a1f35;
+    border-left: 4px solid #667eea;
+    padding: 0.75rem 1rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.84rem;
+    color: #9ca3af;
+    margin: 0.6rem 0 1rem;
+}
+
+/* ── Comparison table tweaks ────────────────────────────────── */
+table.compare-table th {
+    background: #1e2130;
+    color: #667eea;
+}
+table.compare-table td { color: #e5e7eb; }
+
+/* ── Sidebar ────────────────────────────────────────────────── */
+.css-1d391kg { background-color: #131722 !important; }
+

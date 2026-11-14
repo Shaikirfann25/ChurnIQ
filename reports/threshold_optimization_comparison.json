@@ -1,0 +1,108 @@
+{
+  "logistic_regression": {
+    "model": "LogisticRegression",
+    "optimal_threshold": 0.54,
+    "default_threshold": 0.5,
+    "f1_gain_from_optimization": 0.0082,
+    "tie_breaking_rule": "Lowest threshold selected among all thresholds achieving max F1. Rationale: a lower threshold increases recall (catching more churners) when F1 is tied.",
+    "n_ties": 1,
+    "default_metrics": {
+      "threshold": 0.5,
+      "precision": 0.5067,
+      "recall": 0.8143,
+      "f1": 0.6247,
+      "tn": 554,
+      "fp": 222,
+      "fn": 52,
+      "tp": 228,
+      "roc_auc": 0.8449,
+      "pr_auc": 0.6314
+    },
+    "optimal_metrics": {
+      "threshold": 0.54,
+      "precision": 0.522,
+      "recall": 0.8036,
+      "f1": 0.6329,
+      "tn": 570,
+      "fp": 206,
+      "fn": 55,
+      "tp": 225,
+      "roc_auc": 0.8449,
+      "pr_auc": 0.6314
+    },
+    "risk_distribution": {
+      "boundaries": {
+        "low_threshold": 0.3,
+        "high_threshold": 0.7,
+        "note": "Risk categories are INDEPENDENT of the binary classification threshold. They are used only for business prioritisation, not for the churn decision."
+      },
+      "counts": {
+        "Low": {
+          "count": 440,
+          "pct": 41.67
+        },
+        "Medium": {
+          "count": 322,
+          "pct": 30.49
+        },
+        "High": {
+          "count": 294,
+          "pct": 27.84
+        }
+      }
+    }
+  },
+  "mlp": {
+    "model": "MLP",
+    "optimal_threshold": 0.46,
+    "default_threshold": 0.5,
+    "f1_gain_from_optimization": 0.003,
+    "tie_breaking_rule": "Lowest threshold selected among all thresholds achieving max F1. Rationale: a lower threshold increases recall (catching more churners) when F1 is tied.",
+    "n_ties": 1,
+    "default_metrics": {
+      "threshold": 0.5,
+      "precision": 0.5211,
+      "recall": 0.7929,
+      "f1": 0.6289,
+      "tn": 572,
+      "fp": 204,
+      "fn": 58,
+      "tp": 222,
+      "roc_auc": 0.8454,
+      "pr_auc": 0.6321
+    },
+    "optimal_metrics": {
+      "threshold": 0.46,
+      "precision": 0.5134,
+      "recall": 0.8214,
+      "f1": 0.6319,
+      "tn": 558,
+      "fp": 218,
+      "fn": 50,
+      "tp": 230,
+      "roc_auc": 0.8454,
+      "pr_auc": 0.6321
+    },
+    "risk_distribution": {
+      "boundaries": {
+        "low_threshold": 0.3,
+        "high_threshold": 0.7,
+        "note": "Risk categories are INDEPENDENT of the binary classification threshold. They are used only for business prioritisation, not for the churn decision."
+      },
+      "counts": {
+        "Low": {
+          "count": 464,
+          "pct": 43.94
+        },
+        "Medium": {
+          "count": 352,
+          "pct": 33.33
+        },
+        "High": {
+          "count": 240,
+          "pct": 22.73
+        }
+      }
+    }
+  }
+}
