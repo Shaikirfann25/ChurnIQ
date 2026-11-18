@@ -19,8 +19,8 @@ from plotly.subplots import make_subplots
 
 # ── Colour palette (Lime-inspired clean SaaS) ────────────────────────────────
 PALETTE = {
-    "lr":        "#2563EB",   # Logistic Regression – Clean Royal Tech Blue
-    "mlp":       "#00B300",   # MLP – Deep Emerald/Lime Green (Champion Model)
+    "lr":        "#737373",   # Logistic Regression – Neutral Grey
+    "mlp":       "#00DD00",   # MLP – Primary Lime Green (Champion Model)
     "lime":      "#00DD00",   # Primary Lime accent
     "positive":  "#087A08",   # Dark green (accessible text/emphasis)
     "negative":  "#DC2626",   # Red
@@ -287,11 +287,11 @@ def risk_distribution_donut(risk_summary: dict, model_label: str) -> go.Figure:
         textinfo="label+percent",
         textfont=dict(size=13, color="#FFFFFF", family="Inter, sans-serif"),
         insidetextorientation="radial",
-        hovertemplate="<b>%{label} Risk Tier</b><br>Accounts: %{value:,}<br>Portfolio Share: %{percent}<extra></extra>",
+        hovertemplate="<b>%{label} Risk Tier</b><br>Accounts: %{value:,}<br>Validation Cohort Share: %{percent}<extra></extra>",
     ))
     fig.update_layout(
         title=dict(
-            text=f"<b>Portfolio Risk Stratification – {model_label}</b>",
+            text=f"<b>Validation Cohort Risk Stratification (N=1,056) – {model_label}</b>",
             font=dict(size=15, color=PALETTE["text"]),
             x=0.01,
             xanchor="left",

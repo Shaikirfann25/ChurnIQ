@@ -221,7 +221,7 @@ The production dashboard (`app/streamlit_app.py`) is organized into 7 specialize
 3. 🎯 **Threshold Analysis:** Interactive $F_1$ vs. threshold curves for both models with marked optimal operating points, and full threshold search tables.
 4. ⚠️ **Risk Stratification:** Business risk donut chart, risk tier customer breakdown, validation churn rate per tier table, and sample prediction records.
 5. 🔍 **SHAP Explainability:** Global feature importance bar plots, beeswarm summary plots, and 4 local waterfall case studies (True Positive, True Negative, False Positive, False Negative).
-6. 🔮 **Individual Prediction:** Real-time interactive scoring form with 19 customer attributes, visual probability gauge, business risk badge, and top-5 contributing features.
+6. 👤 **Individual Prediction:** Real-time interactive scoring form with 19 customer attributes, visual probability gauge, business risk badge, and top-5 contributing features.
 7. 🛠️ **Pipeline Status:** Automated artifact verification panel checking 20+ pipeline assets on disk, accompanied by active runtime environment diagnostics.
 
 ---

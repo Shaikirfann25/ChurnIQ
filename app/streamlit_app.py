@@ -6,11 +6,11 @@ Redesigned with Lime-inspired minimalist, modern SaaS visual identity.
 
 Pages / Tabs:
   1. 📊 Overview           – Executive summary, dataset stats, class distribution, pipeline architecture
-  2. 🏆 Model Performance  – LR vs MLP comparative evaluation on quarantined test set, ROC/PR curves
+  2. 🏆 Model Performance  – LR vs MLP comparative evaluation on held-out test set, ROC/PR curves
   3. 🎯 Threshold Analysis – Validation F1 search curves, default vs optimal threshold trade-offs
   4. ⚠️ Risk Stratification – Decoupled Low/Medium/High risk tiers, business actions, empirical calibration
   5. 🔍 SHAP Explainability – Global feature importance, local decision case studies, audit disclaimer
-  6. 🔮 Individual Prediction – Single-customer real-time inference with preprocessing pipeline
+  6. 👤 Individual Prediction – Single-customer real-time inference with preprocessing pipeline
   7. 🛠️ Pipeline Status     – Complete artifact health check and runtime telemetry
 
 Design rules:
@@ -227,7 +227,7 @@ def render_sidebar() -> str:
             "🎯 Threshold Analysis",
             "⚠️ Risk Stratification",
             "🔍 SHAP Explainability",
-            "🔮 Individual Prediction",
+            "👤 Individual Prediction",
             "🛠️ Pipeline Status",
         ]
 
@@ -284,7 +284,7 @@ def page_overview():
         ("Total Portfolio Accounts", f"{stats['n_total']:,}", None, True),
         ("Training Set (70%)", f"{stats['n_train']:,}", "Stratified Split", True),
         ("Validation Set (15%)", f"{stats['n_val']:,}", "Threshold Tuning", True),
-        ("Quarantined Test (15%)", f"{stats['n_test']:,}", "Final Audit", True),
+        ("Held-out Test (15%)", f"{stats['n_test']:,}", "Final Audit", True),
         ("Baseline Churn Rate", f"{stats['churn_rate']}%", "Imbalanced Class", False),
     ]
     for col, (label, val, delta, pos) in zip(cols, kpis):
@@ -296,7 +296,7 @@ def page_overview():
     # ── Architecture & Class Distribution ──────────────────────────────────────
     col_left, col_right = st.columns([1.15, 1])
     with col_left:
-        section_header("System Pipeline Architecture", "8 modular stages with verified artifacts")
+        section_header("System Pipeline Architecture", "8 pipeline modules + 1 analytics interface")
         st.markdown("""
 <table class="compare-table">
     <thead>
@@ -339,7 +339,7 @@ def page_overview():
                 <li><strong>Test F1 Score:</strong> <span style="color:#087A08; font-weight:700;">0.6326</span> at optimal threshold τ = 0.46 (vs LR 0.6259 at τ = 0.54).</li>
                 <li><strong>Meaningful Margin:</strong> Lead of <strong>+0.0067 F1</strong> exceeds pre-registered significance bound (> 0.0050).</li>
                 <li><strong>Discriminative Power:</strong> Test ROC-AUC of <strong>0.8465</strong> (vs LR 0.8448).</li>
-                <li><strong>Generalisation:</strong> Zero test degradation detected across validation and quarantined test sets.</li>
+                <li><strong>Generalisation:</strong> Zero test degradation detected across validation and held-out test sets.</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -365,9 +365,9 @@ def page_overview():
 def page_model_performance():
     page_header(
         title="🏆 Model Performance & Audit",
-        description="Final unbiased comparative evaluation on the quarantined test set (n=1,057) across default (τ=0.50) and validation-optimal thresholds.",
+        description="Final unbiased comparative evaluation on the held-out test set (n=1,057) across default (τ=0.50) and validation-optimal thresholds.",
         kicker="Module 5 – Evaluation",
-        status_badge="Quarantined Test Set",
+        status_badge="Held-out Test Set",
     )
 
     results = load_final_test_metrics()
@@ -441,7 +441,7 @@ def page_model_performance():
 
     roc_path = FIGURES_DIR / "roc_pr_curves_test.png"
     if roc_path.exists():
-        st.image(str(roc_path), caption="ROC and PR curves (quarantined test set) — exported from Stage 5 evaluation", use_column_width=True)
+        st.image(str(roc_path), caption="ROC and PR curves (held-out test set) — exported from Stage 5 evaluation", use_column_width=True)
     else:
         try:
             curve_data = compute_roc_pr_data()
@@ -477,7 +477,7 @@ def page_model_performance():
     )
 
     # ── Generalisation analysis ───────────────────────────────────────────────
-    section_header("Generalisation Audit & Overfitting Verification", "Validation vs Quarantined Test partition drift check")
+    section_header("Generalisation Audit & Overfitting Verification", "Validation vs Held-out Test partition drift check")
     st.markdown("""
 <table class="compare-table">
     <thead>
@@ -574,7 +574,7 @@ def page_threshold_analysis():
     st.markdown("<br>", unsafe_allow_html=True)
     st.info(
         f"🔗 **Deterministic Tie-Breaking Rule:** {meta.get('tie_breaking_rule', 'lowest threshold among all max-F1 candidates')}. "
-        "Threshold optimization was executed strictly on the validation set; the quarantined test partition was never evaluated during search."
+        "Threshold optimization was executed strictly on the validation set; the held-out test partition was never evaluated during search."
     )
 
     # ── F1 search curve ────────────────────────────────────────────────────────
@@ -611,9 +611,9 @@ def page_threshold_analysis():
 def page_risk_stratification():
     page_header(
         title="⚠️ Risk Stratification & Retention Tiers",
-        description="Action-oriented commercial tiers based on raw churn probability, independent of binary decision thresholds.",
+        description="Action-oriented commercial tiers evaluated on the validation cohort (N=1,056) based on raw churn probability, independent of binary decision thresholds.",
         kicker="Commercial Policy",
-        status_badge="Tri-Tier Governance",
+        status_badge="Validation Cohort (N=1,056)",
     )
 
     st.markdown("""
@@ -668,7 +668,7 @@ def page_risk_stratification():
             metric_card(
                 f"{cat} Risk Accounts",
                 f"{s['count']:,}",
-                delta=f"{s['pct']:.1f}% portfolio share",
+                delta=f"{s['pct']:.1f}% validation cohort share (N=1,056)",
                 delta_positive=(cat == "Low"),
             )
 
@@ -681,16 +681,16 @@ def page_risk_stratification():
         st.plotly_chart(fig_donut, use_container_width=True)
 
     with col_bar:
-        section_header("Tier Breakdown & Action Summary")
+        section_header("Tier Breakdown & Action Summary", "Validation cohort distribution (N=1,056)")
         for cat in ["High", "Medium", "Low"]:
             s = risk_summary[cat]
             risk_badge(cat)
-            st.progress(s["pct"] / 100, text=f"{s['count']:,} accounts ({s['pct']:.1f}% of total)")
+            st.progress(s["pct"] / 100, text=f"{s['count']:,} accounts ({s['pct']:.1f}% of validation cohort N=1,056)")
             st.markdown("")
 
     # ── Churn rate by risk tier ───────────────────────────────────────────────
     st.markdown("<hr>", unsafe_allow_html=True)
-    section_header("Empirical Calibration on Validation Split", "Actual observed churn rate by predicted risk tier")
+    section_header("Empirical Calibration on Validation Split", "Actual observed churn rate by predicted risk tier across validation cohort (N=1,056)")
     df_val = load_val_predictions(model_key)
     prob_col  = "churn_probability" if "churn_probability" in df_val.columns else None
     label_col = "actual_churn"      if "actual_churn"      in df_val.columns else None
@@ -720,12 +720,12 @@ def page_risk_stratification():
             hide_index=True,
         )
         st.caption(
-            "Empirical validation confirms clear calibration: accounts categorized as High Risk churn at 64.2%, "
+            "Empirical validation confirms clear calibration across the validation cohort (N=1,056): accounts categorized as High Risk churn at 64.2%, "
             "whereas Low Risk accounts exhibit only a 5.2% churn incidence."
         )
 
     # ── Sample predictions ────────────────────────────────────────────────────
-    with st.expander("📋 View Sample Scored Records (First 50 rows)"):
+    with st.expander("📋 View Sample Scored Records (Validation Cohort N=1,056 – First 50 rows)"):
         st.dataframe(df_inf.head(50), use_container_width=True)
 
 
@@ -849,7 +849,7 @@ _PAYMENT_OPTS           = [
 
 def page_individual_prediction():
     page_header(
-        title="🔮 Real-Time Customer Churn Predictor",
+        title="👤 Real-Time Customer Churn Predictor",
         description="Single-customer real-time scoring via the full fitted ChurnIQInference pipeline and decision thresholds.",
         kicker="Module 7 – Inference",
         status_badge="Live Inference Ready",
@@ -901,7 +901,7 @@ def page_individual_prediction():
                                                float(tenure * monthly_charges), 10.0)
 
         st.markdown("<br>", unsafe_allow_html=True)
-        submitted = st.form_submit_button("🔮 Run Churn Prediction Scoring", use_container_width=True)
+        submitted = st.form_submit_button("👤 Run Churn Prediction Scoring", use_container_width=True)
 
     if submitted:
         customer_data = {
@@ -1125,7 +1125,7 @@ def main():
         page_risk_stratification()
     elif page == "🔍 SHAP Explainability":
         page_shap_explainability()
-    elif page == "🔮 Individual Prediction":
+    elif page == "👤 Individual Prediction":
         page_individual_prediction()
     elif page == "🛠️ Pipeline Status":
         page_pipeline_status()
