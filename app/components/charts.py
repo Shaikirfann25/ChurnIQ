@@ -2,6 +2,7 @@
 ChurnIQ – app/components/charts.py
 ===================================
 Reusable Plotly chart factories for the Streamlit dashboard.
+Lime-inspired clean SaaS design system with high-contrast readability.
 
 All functions accept pre-loaded data (DataFrames, dicts, lists) and return
 Plotly Figure objects ready for `st.plotly_chart(fig, use_container_width=True)`.
@@ -16,36 +17,59 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 
 
-# ── Colour palette ────────────────────────────────────────────────────────────
+# ── Colour palette (Lime-inspired clean SaaS) ────────────────────────────────
 PALETTE = {
-    "lr":        "#667eea",   # Logistic Regression – indigo
-    "mlp":       "#f093fb",   # MLP – pink-purple
-    "positive":  "#34d399",   # green
-    "negative":  "#f87171",   # red
-    "warn":      "#fbbf24",   # amber
-    "bg":        "#0e1117",
-    "grid":      "#2d3148",
-    "text":      "#e5e7eb",
-    "High":      "#f87171",
-    "Medium":    "#fbbf24",
-    "Low":       "#34d399",
+    "lr":        "#2563EB",   # Logistic Regression – Clean Royal Tech Blue
+    "mlp":       "#00B300",   # MLP – Deep Emerald/Lime Green (Champion Model)
+    "lime":      "#00DD00",   # Primary Lime accent
+    "positive":  "#087A08",   # Dark green (accessible text/emphasis)
+    "negative":  "#DC2626",   # Red
+    "warn":      "#D97706",   # Amber
+    "bg":        "#FFFFFF",   # Pure surface white
+    "grid":      "#F0F2F0",   # Very soft grid
+    "border":    "#E5E7E5",   # Card border
+    "text":      "#171717",   # Dark primary text
+    "muted":     "#737373",   # Secondary text
+    "High":      "#DC2626",
+    "Medium":    "#D97706",
+    "Low":       "#087A08",
 }
 
-_PLOTLY_TEMPLATE = "plotly_dark"
+_PLOTLY_TEMPLATE = "plotly_white"
 
 _LAYOUT_DEFAULTS = dict(
     template=_PLOTLY_TEMPLATE,
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(color=PALETTE["text"], family="Inter, sans-serif"),
-    margin=dict(l=40, r=20, t=50, b=40),
+    font=dict(color=PALETTE["text"], family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"),
+    margin=dict(l=45, r=25, t=55, b=45),
 )
 
 
 def _apply_defaults(fig: go.Figure, title: str = "") -> go.Figure:
-    fig.update_layout(title=dict(text=title, font=dict(size=15)), **_LAYOUT_DEFAULTS)
-    fig.update_xaxes(gridcolor=PALETTE["grid"], zerolinecolor=PALETTE["grid"])
-    fig.update_yaxes(gridcolor=PALETTE["grid"], zerolinecolor=PALETTE["grid"])
+    fig.update_layout(
+        title=dict(
+            text=f"<b>{title}</b>" if title else "",
+            font=dict(size=15, color=PALETTE["text"]),
+            x=0.01,
+            xanchor="left",
+        ),
+        **_LAYOUT_DEFAULTS,
+    )
+    fig.update_xaxes(
+        gridcolor=PALETTE["grid"],
+        zerolinecolor=PALETTE["border"],
+        linecolor=PALETTE["border"],
+        tickfont=dict(color=PALETTE["muted"], size=11),
+        title_font=dict(color=PALETTE["text"], size=12),
+    )
+    fig.update_yaxes(
+        gridcolor=PALETTE["grid"],
+        zerolinecolor=PALETTE["border"],
+        linecolor=PALETTE["border"],
+        tickfont=dict(color=PALETTE["muted"], size=11),
+        title_font=dict(color=PALETTE["text"], size=12),
+    )
     return fig
 
 
@@ -63,8 +87,8 @@ def roc_curve_chart(
     # Diagonal reference
     fig.add_trace(go.Scatter(
         x=[0, 1], y=[0, 1], mode="lines",
-        line=dict(dash="dash", color="grey", width=1),
-        name="Random (AUC=0.50)", showlegend=True,
+        line=dict(dash="dash", color="#9CA3AF", width=1.5),
+        name="Random Guess (AUC=0.50)", showlegend=True,
     ))
     fig.add_trace(go.Scatter(
         x=fpr_lr, y=tpr_lr, mode="lines",
@@ -73,12 +97,13 @@ def roc_curve_chart(
     ))
     fig.add_trace(go.Scatter(
         x=fpr_mlp, y=tpr_mlp, mode="lines",
-        line=dict(color=PALETTE["mlp"], width=2.5),
-        name=f"MLP (AUC={auc_mlp:.4f})",
+        line=dict(color=PALETTE["mlp"], width=3.0),
+        name=f"MLP Champion (AUC={auc_mlp:.4f})",
     ))
-    fig.update_xaxes(title="False Positive Rate", range=[0, 1])
-    fig.update_yaxes(title="True Positive Rate",  range=[0, 1.02])
-    return _apply_defaults(fig, "ROC Curve – Test Set")
+    fig.update_xaxes(title="False Positive Rate (1 - Specificity)", range=[-0.01, 1.01])
+    fig.update_yaxes(title="True Positive Rate (Recall)",  range=[-0.01, 1.03])
+    fig.update_layout(legend=dict(orientation="h", y=-0.22, x=0))
+    return _apply_defaults(fig, "ROC Curve – Test Set Evaluation")
 
 
 # ── 2. PR Curve ───────────────────────────────────────────────────────────────
@@ -96,22 +121,23 @@ def pr_curve_chart(
     # No-skill line
     fig.add_trace(go.Scatter(
         x=[0, 1], y=[baseline_rate, baseline_rate], mode="lines",
-        line=dict(dash="dash", color="grey", width=1),
-        name=f"No Skill (rate={baseline_rate:.2f})", showlegend=True,
+        line=dict(dash="dash", color="#9CA3AF", width=1.5),
+        name=f"No Skill (Prevalence={baseline_rate:.2f})", showlegend=True,
     ))
     fig.add_trace(go.Scatter(
         x=rec_lr, y=prec_lr, mode="lines",
         line=dict(color=PALETTE["lr"], width=2.5),
-        name=f"Logistic Reg. (AP={prauc_lr:.4f})",
+        name=f"Logistic Reg. (PR-AUC={prauc_lr:.4f})",
     ))
     fig.add_trace(go.Scatter(
         x=rec_mlp, y=prec_mlp, mode="lines",
-        line=dict(color=PALETTE["mlp"], width=2.5),
-        name=f"MLP (AP={prauc_mlp:.4f})",
+        line=dict(color=PALETTE["mlp"], width=3.0),
+        name=f"MLP Champion (PR-AUC={prauc_mlp:.4f})",
     ))
-    fig.update_xaxes(title="Recall", range=[0, 1])
-    fig.update_yaxes(title="Precision", range=[0, 1.02])
-    return _apply_defaults(fig, "Precision-Recall Curve – Test Set")
+    fig.update_xaxes(title="Recall (Sensitivity)", range=[-0.01, 1.01])
+    fig.update_yaxes(title="Precision (PPV)", range=[-0.01, 1.03])
+    fig.update_layout(legend=dict(orientation="h", y=-0.22, x=0))
+    return _apply_defaults(fig, "Precision-Recall Curve – Test Set Evaluation")
 
 
 # ── 3. Confusion Matrix ───────────────────────────────────────────────────────
@@ -120,29 +146,39 @@ def confusion_matrix_chart(
     model_name: str,
     threshold: float,
 ) -> go.Figure:
-    """Annotated confusion-matrix heatmap."""
+    """Annotated confusion-matrix heatmap with clean SaaS styling."""
     z    = [[tn, fp], [fn, tp]]
-    text = [[f"TN<br>{tn}", f"FP<br>{fp}"], [f"FN<br>{fn}", f"TP<br>{tp}"]]
+    text = [
+        [f"<b>True Negative (TN)</b><br><span style='font-size:22px;'>{tn:,}</span><br>Correct Non-Churn",
+         f"<b>False Positive (FP)</b><br><span style='font-size:22px;'>{fp:,}</span><br>False Alarm"],
+        [f"<b>False Negative (FN)</b><br><span style='font-size:22px;'>{fn:,}</span><br>Missed Churn",
+         f"<b>True Positive (TP)</b><br><span style='font-size:22px;'>{tp:,}</span><br>Caught Churn"]
+    ]
 
     fig = go.Figure(go.Heatmap(
         z=z,
         text=text,
         texttemplate="%{text}",
-        textfont=dict(size=18, color="white"),
-        colorscale=[[0, "#1e2130"], [0.5, "#3a3f7a"], [1, "#667eea"]],
+        textfont=dict(size=13, color=PALETTE["text"]),
+        colorscale=[
+            [0.0, "#F7F9F7"],
+            [0.3, "#E9FFE9"],
+            [0.7, "#86EFAC"],
+            [1.0, "#00DD00"],
+        ],
         showscale=False,
-        xgap=3, ygap=3,
+        xgap=4, ygap=4,
     ))
     fig.update_xaxes(
-        tickvals=[0, 1], ticktext=["Predicted: No", "Predicted: Yes"],
-        title="Predicted",
+        tickvals=[0, 1], ticktext=["<b>Predicted: Retained</b>", "<b>Predicted: Churn</b>"],
+        title="Model Prediction", side="bottom",
     )
     fig.update_yaxes(
-        tickvals=[0, 1], ticktext=["Actual: No", "Actual: Yes"],
-        title="Actual", autorange="reversed",
+        tickvals=[0, 1], ticktext=["<b>Actual: Retained</b>", "<b>Actual: Churn</b>"],
+        title="Actual Outcome", autorange="reversed",
     )
     return _apply_defaults(
-        fig, f"{model_name} – Confusion Matrix (threshold={threshold:.2f})"
+        fig, f"{model_name} – Confusion Matrix (τ = {threshold:.2f})"
     )
 
 
@@ -152,12 +188,7 @@ def threshold_f1_chart(
     optimal_lr: float,
     optimal_mlp: float,
 ) -> go.Figure:
-    """F1 vs threshold curves for both models with optimal markers.
-
-    Accepts either:
-      - wide format with columns  ['threshold', 'f1_lr', 'f1_mlp']
-      - long format with columns  ['model', 'threshold', 'f1']  (actual saved format)
-    """
+    """F1 vs threshold curves for both models with optimal markers."""
     fig = go.Figure()
 
     # Normalise to wide format
@@ -172,28 +203,36 @@ def threshold_f1_chart(
         df_wide = df_search.copy()
 
     for col, color, model_label, opt in [
-        ("f1_lr",  PALETTE["lr"],  "Logistic Reg.", optimal_lr),
-        ("f1_mlp", PALETTE["mlp"], "MLP",           optimal_mlp),
+        ("f1_lr",  PALETTE["lr"],  "Logistic Regression", optimal_lr),
+        ("f1_mlp", PALETTE["mlp"], "MLP Champion",       optimal_mlp),
     ]:
         if col not in df_wide.columns:
             continue
         fig.add_trace(go.Scatter(
             x=df_wide["threshold"], y=df_wide[col],
-            mode="lines", line=dict(color=color, width=2),
+            mode="lines", line=dict(color=color, width=2.5),
             name=f"{model_label} F1",
         ))
         best_rows = df_wide.loc[df_wide["threshold"].round(2) == round(opt, 2), col]
         if not best_rows.empty:
             fig.add_trace(go.Scatter(
                 x=[opt], y=[best_rows.values[0]],
-                mode="markers",
-                marker=dict(symbol="star", size=14, color=color,
-                            line=dict(color="white", width=1)),
-                name=f"{model_label} optimal ({opt:.2f})",
+                mode="markers+text",
+                marker=dict(symbol="star", size=15, color=color,
+                            line=dict(color="#171717", width=1.5)),
+                name=f"{model_label} Optimal (τ={opt:.2f}, F1={best_rows.values[0]:.4f})",
+                text=[f"  τ={opt:.2f}"],
+                textposition="top right",
+                textfont=dict(size=12, color=color),
             ))
-    fig.update_xaxes(title="Decision Threshold", range=[0, 1])
-    fig.update_yaxes(title="F1 Score")
-    return _apply_defaults(fig, "Threshold vs F1 – Validation Set")
+
+    # Add default reference line at 0.50
+    fig.add_vline(x=0.50, line_dash="dash", line_color="#9CA3AF", annotation_text="Default τ=0.50")
+
+    fig.update_xaxes(title="Decision Threshold (τ)", range=[0, 1])
+    fig.update_yaxes(title="Validation F1 Score")
+    fig.update_layout(legend=dict(orientation="h", y=-0.22, x=0))
+    return _apply_defaults(fig, "Threshold Optimization Curve – Validation F1 Profile")
 
 
 # ── 5. SHAP Feature Importance Bar ───────────────────────────────────────────
@@ -213,18 +252,24 @@ def shap_importance_bar(
         .rename(columns={model_col: "importance"})
         .sort_values("importance", ascending=False)
         .head(top_n)
-        .iloc[::-1]  # flip for horizontal bar (largest at top)
+        .iloc[::-1]  # flip for horizontal bar
     )
     bar_color = color or PALETTE["mlp"]
     fig = go.Figure(go.Bar(
         x=df["importance"],
         y=df["feature"],
         orientation="h",
-        marker_color=bar_color,
-        marker_line=dict(width=0),
+        marker=dict(
+            color=bar_color,
+            line=dict(color="rgba(0,0,0,0)", width=0),
+        ),
+        text=[f"{v:.4f}" for v in df["importance"]],
+        textposition="outside",
+        textfont=dict(size=11, color=PALETTE["muted"]),
     ))
-    fig.update_xaxes(title="Mean |SHAP Value|")
-    fig.update_yaxes(tickfont=dict(size=11))
+    fig.update_xaxes(title="Mean |SHAP Value| (Impact on Probability Output)")
+    fig.update_yaxes(tickfont=dict(size=11, color=PALETTE["text"]))
+    fig.update_layout(margin=dict(l=150, r=40, t=50, b=40))
     return _apply_defaults(fig, f"Global Feature Importance – {model_label} (Top {top_n})")
 
 
@@ -237,17 +282,22 @@ def risk_distribution_donut(risk_summary: dict, model_label: str) -> go.Figure:
 
     fig = go.Figure(go.Pie(
         labels=labels, values=values,
-        hole=0.52,
-        marker=dict(colors=colors, line=dict(color=PALETTE["bg"], width=3)),
+        hole=0.60,
+        marker=dict(colors=colors, line=dict(color="#FFFFFF", width=3)),
         textinfo="label+percent",
-        textfont=dict(size=14),
+        textfont=dict(size=13, color="#FFFFFF", family="Inter, sans-serif"),
         insidetextorientation="radial",
-        hovertemplate="<b>%{label}</b><br>Count: %{value}<br>Share: %{percent}<extra></extra>",
+        hovertemplate="<b>%{label} Risk Tier</b><br>Accounts: %{value:,}<br>Portfolio Share: %{percent}<extra></extra>",
     ))
     fig.update_layout(
-        title=dict(text=f"Risk Distribution – {model_label}", font=dict(size=15)),
+        title=dict(
+            text=f"<b>Portfolio Risk Stratification – {model_label}</b>",
+            font=dict(size=15, color=PALETTE["text"]),
+            x=0.01,
+            xanchor="left",
+        ),
         showlegend=True,
-        legend=dict(orientation="h", y=-0.1),
+        legend=dict(orientation="h", y=-0.12, x=0.1),
         **_LAYOUT_DEFAULTS,
     )
     return fig
@@ -259,54 +309,69 @@ def training_history_chart(history: dict) -> go.Figure:
     epochs = list(range(1, len(history.get("loss", [])) + 1))
     fig = make_subplots(
         rows=1, cols=2,
-        subplot_titles=("Binary Cross-Entropy Loss", "Accuracy"),
+        subplot_titles=("<b>Binary Cross-Entropy Loss</b>", "<b>Classification Accuracy</b>"),
         horizontal_spacing=0.12,
     )
     # Loss
     fig.add_trace(go.Scatter(
         x=epochs, y=history.get("loss", []),
         mode="lines", name="Train Loss",
-        line=dict(color=PALETTE["mlp"], width=2),
+        line=dict(color=PALETTE["mlp"], width=2.5),
     ), row=1, col=1)
     fig.add_trace(go.Scatter(
         x=epochs, y=history.get("val_loss", []),
         mode="lines", name="Val Loss",
-        line=dict(color=PALETTE["mlp"], width=2, dash="dot"),
+        line=dict(color=PALETTE["mlp"], width=2, dash="dash"),
     ), row=1, col=1)
     # Accuracy
     fig.add_trace(go.Scatter(
         x=epochs, y=history.get("accuracy", []),
-        mode="lines", name="Train Acc",
-        line=dict(color=PALETTE["lr"], width=2),
+        mode="lines", name="Train Accuracy",
+        line=dict(color=PALETTE["lr"], width=2.5),
     ), row=1, col=2)
     fig.add_trace(go.Scatter(
         x=epochs, y=history.get("val_accuracy", []),
-        mode="lines", name="Val Acc",
-        line=dict(color=PALETTE["lr"], width=2, dash="dot"),
+        mode="lines", name="Val Accuracy",
+        line=dict(color=PALETTE["lr"], width=2, dash="dash"),
     ), row=1, col=2)
 
-    fig.update_xaxes(title_text="Epoch")
+    fig.update_xaxes(title_text="Epoch", row=1, col=1)
+    fig.update_xaxes(title_text="Epoch", row=1, col=2)
     fig.update_layout(
-        legend=dict(orientation="h", y=-0.18),
+        legend=dict(orientation="h", y=-0.18, x=0.2),
         **_LAYOUT_DEFAULTS,
     )
-    fig.update_layout(title=dict(text="MLP Training History", font=dict(size=15)))
+    fig.update_layout(
+        title=dict(
+            text="<b>MLP Neural Network Convergence History</b>",
+            font=dict(size=15, color=PALETTE["text"]),
+            x=0.01,
+            xanchor="left",
+        )
+    )
     return fig
 
 
 # ── 8. Class distribution bar ────────────────────────────────────────────────
 def class_distribution_chart(n_no: int, n_yes: int) -> go.Figure:
     """Simple bar chart showing churn class imbalance."""
+    total = n_no + n_yes
+    pct_no = n_no / total * 100
+    pct_yes = n_yes / total * 100
+
     fig = go.Figure(go.Bar(
-        x=["No Churn", "Churn"],
+        x=["Retained (No Churn)", "Churned (Yes)"],
         y=[n_no, n_yes],
-        marker_color=[PALETTE["Low"], PALETTE["High"]],
-        text=[n_no, n_yes],
+        marker=dict(
+            color=[PALETTE["Low"], PALETTE["High"]],
+            line=dict(color="rgba(0,0,0,0)", width=0),
+        ),
+        text=[f"<b>{n_no:,}</b><br>({pct_no:.1f}%)", f"<b>{n_yes:,}</b><br>({pct_yes:.1f}%)"],
         textposition="outside",
-        width=0.4,
+        width=0.45,
     ))
-    fig.update_yaxes(title="Customers")
-    return _apply_defaults(fig, "Class Distribution – Full Dataset")
+    fig.update_yaxes(title="Customer Count", range=[0, max(n_no, n_yes) * 1.15])
+    return _apply_defaults(fig, "Benchmark Class Distribution (Full Dataset N=7,043)")
 
 
 # ── 9. Metrics comparison bar chart ─────────────────────────────────────────
@@ -318,15 +383,21 @@ def metrics_comparison_chart(
     vals_lr  = [metrics_lr.get(k, 0)  for k in metric_keys]
     vals_mlp = [metrics_mlp.get(k, 0) for k in metric_keys]
 
+    formatted_labels = [k.replace("_", "-").upper() if len(k) <= 4 else k.replace("_", " ").title() for k in metric_keys]
+
     fig.add_trace(go.Bar(
-        name="Logistic Reg.", x=metric_keys, y=vals_lr,
+        name="Logistic Regression (τ=0.54)", x=formatted_labels, y=vals_lr,
         marker_color=PALETTE["lr"], text=[f"{v:.3f}" for v in vals_lr],
-        textposition="outside",
+        textposition="outside", textfont=dict(size=11),
     ))
     fig.add_trace(go.Bar(
-        name="MLP", x=metric_keys, y=vals_mlp,
+        name="MLP Champion (τ=0.46)", x=formatted_labels, y=vals_mlp,
         marker_color=PALETTE["mlp"], text=[f"{v:.3f}" for v in vals_mlp],
-        textposition="outside",
+        textposition="outside", textfont=dict(size=11),
     ))
-    fig.update_layout(barmode="group", yaxis=dict(range=[0, 1.08]))
-    return _apply_defaults(fig, "LR vs MLP – Key Metrics at Optimal Threshold (Test Set)")
+    fig.update_layout(
+        barmode="group",
+        yaxis=dict(range=[0, 1.12], title="Score"),
+        legend=dict(orientation="h", y=-0.2, x=0.2),
+    )
+    return _apply_defaults(fig, "Test Set Model Evaluation – LR vs MLP at Optimal Thresholds")

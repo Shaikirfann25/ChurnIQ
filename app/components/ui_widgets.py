@@ -2,6 +2,7 @@
 ChurnIQ – app/components/ui_widgets.py
 =======================================
 Reusable Streamlit UI widget helpers for the dashboard.
+Lime-inspired clean SaaS design system.
 
 All functions return or render Streamlit components.
 No model loading or computation occurs here.
@@ -10,14 +11,42 @@ No model loading or computation occurs here.
 import streamlit as st
 
 
-# ── Colour tokens (must stay in sync with custom.css) ────────────────────────
+# ── Colour tokens (in sync with custom.css) ──────────────────────────────────
 _RISK_EMOJI  = {"High": "🔴", "Medium": "🟡", "Low": "🟢"}
 _RISK_ACTION = {
-    "High":   "Immediate retention offer — high-touch personalised discount or direct outreach.",
-    "Medium": "Proactive outreach — automated low-cost nudge or loyalty programme engagement.",
-    "Low":    "Routine engagement — standard marketing, no urgent intervention needed.",
+    "High":   "Immediate retention intervention — priority outreach, dedicated account review, or customized contract renegotiation.",
+    "Medium": "Proactive automated engagement — targeted loyalty incentives, feature adoption nudge, and satisfaction survey.",
+    "Low":    "Routine relationship maintenance — standard service marketing, zero invasive intervention required.",
 }
-_RISK_COLOR = {"High": "#f87171", "Medium": "#fbbf24", "Low": "#34d399"}
+_RISK_COLOR = {"High": "#DC2626", "Medium": "#D97706", "Low": "#087A08"}
+_RISK_BG    = {"High": "#FEE2E2", "Medium": "#FEF3C7", "Low": "#E9FFE9"}
+_RISK_BORDER= {"High": "#FCA5A5", "Medium": "#FCD34D", "Low": "#86EFAC"}
+
+
+# ── Page Header Component ────────────────────────────────────────────────────
+def page_header(
+    title: str,
+    description: str,
+    kicker: str = "Production Telemetry",
+    status_badge: str | None = "Live System",
+) -> None:
+    """Render a unified, sleek SaaS page header banner."""
+    badge_html = ""
+    if status_badge:
+        badge_html = f'<span class="page-header-kicker"><span style="color:#00DD00;">●</span> {status_badge}</span>'
+    elif kicker:
+        badge_html = f'<span class="page-header-kicker">{kicker}</span>'
+
+    st.markdown(
+        f"""
+        <div class="page-header-container">
+            {badge_html}
+            <h1 class="page-header-title">{title}</h1>
+            <p class="page-header-desc">{description}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 # ── Metric card (HTML) ────────────────────────────────────────────────────────
@@ -28,7 +57,7 @@ def metric_card(
     delta_positive: bool = True,
     fmt: str = "{:.4f}",
 ) -> None:
-    """Render a styled metric card via markdown."""
+    """Render a clean SaaS styled metric card."""
     if isinstance(value, float):
         display_value = fmt.format(value)
     else:
@@ -37,7 +66,7 @@ def metric_card(
     delta_html = ""
     if delta is not None:
         cls = "positive" if delta_positive else "negative"
-        arrow = "▲" if delta_positive else "▼"
+        arrow = "↑" if delta_positive else "↓"
         delta_html = (
             f'<div class="metric-delta {cls}">{arrow} {delta}</div>'
         )
@@ -45,8 +74,10 @@ def metric_card(
     st.markdown(
         f"""
         <div class="metric-card">
-            <div class="metric-value">{display_value}</div>
-            <div class="metric-label">{label}</div>
+            <div>
+                <div class="metric-label">{label}</div>
+                <div class="metric-value">{display_value}</div>
+            </div>
             {delta_html}
         </div>
         """,
@@ -56,17 +87,16 @@ def metric_card(
 
 # ── Risk category badge ───────────────────────────────────────────────────────
 def risk_badge(category: str) -> None:
-    """Render a colour-coded risk badge."""
+    """Render a colour-coded risk badge with recommended business action."""
     emoji  = _RISK_EMOJI.get(category, "⚪")
     action = _RISK_ACTION.get(category, "")
-    color  = _RISK_COLOR.get(category, "#9ca3af")
     st.markdown(
         f"""
-        <div style="margin: 0.6rem 0;">
+        <div style="margin: 0.5rem 0;">
             <span class="risk-badge {category}">{emoji} {category} Risk</span>
         </div>
-        <div style="color:{color}; font-size:0.88rem; margin-top:0.4rem;">
-            {action}
+        <div class="risk-action-box {category}">
+            <strong>Action:</strong> {action}
         </div>
         """,
         unsafe_allow_html=True,
@@ -80,8 +110,8 @@ def model_selector(key: str = "model_select") -> str:
     Returns 'mlp' or 'logistic_regression'.
     """
     choice = st.radio(
-        "Select Model",
-        options=["MLP (Neural Network)", "Logistic Regression (Baseline)"],
+        "Active Model Selection",
+        options=["MLP (Neural Network — Champion)", "Logistic Regression (Baseline)"],
         key=key,
         horizontal=True,
     )
@@ -94,15 +124,15 @@ def threshold_display(default: float, optimal: float, model_name: str) -> None:
     col1, col2 = st.columns(2)
     with col1:
         st.metric(
-            label=f"{model_name} — Default Threshold",
+            label=f"{model_name} — Standard Default",
             value=f"{default:.2f}",
         )
     with col2:
         delta_pct = round((optimal - default) * 100, 1)
         st.metric(
-            label=f"{model_name} — Optimal Threshold",
+            label=f"{model_name} — F1-Optimized",
             value=f"{optimal:.2f}",
-            delta=f"{delta_pct:+.1f} pp vs default",
+            delta=f"{delta_pct:+.1f} pp shift",
         )
 
 
@@ -112,38 +142,50 @@ def shap_disclaimer() -> None:
     st.markdown(
         """
         <div class="shap-disclaimer">
-            ⚠️ <strong>SHAP Disclaimer:</strong> SHAP values explain
-            <em>model behaviour</em> — which features most influenced this specific
-            prediction. They do <strong>not</strong> imply causal relationships or
-            prove that a feature causes churn. Use these explanations to understand
-            and audit model decisions, not to infer causal business factors.
+            <strong>⚠️ SHAP Interpretability Disclaimer:</strong> SHAP values explain
+            <em>internal model behaviour</em> — revealing which features most strongly influenced
+            the prediction. They do <strong>not</strong> prove causal relationships or identify
+            the root cause of customer decisions. Use these attributions for model governance
+            and auditability, not as causal marketing guarantees.
         </div>
         """,
         unsafe_allow_html=True,
     )
 
 
-# ── Churn probability gauge (text-based) ─────────────────────────────────────
+# ── Churn probability gauge ───────────────────────────────────────────────────
 def probability_gauge(prob: float) -> None:
-    """Display a visual probability gauge as a progress bar + badge."""
+    """Display a clean visual probability gauge as a progress bar + badge."""
     pct = int(prob * 100)
     if prob >= 0.70:
-        color, label = "#f87171", "HIGH RISK"
+        color, bg, border, label = "#DC2626", "#FEE2E2", "#FCA5A5", "HIGH RISK"
     elif prob >= 0.30:
-        color, label = "#fbbf24", "MEDIUM RISK"
+        color, bg, border, label = "#D97706", "#FEF3C7", "#FCD34D", "MEDIUM RISK"
     else:
-        color, label = "#34d399", "LOW RISK"
+        color, bg, border, label = "#087A08", "#E9FFE9", "#86EFAC", "LOW RISK"
 
     st.markdown(
         f"""
-        <div style="margin: 0.5rem 0 1rem;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
-                <span style="font-size:0.85rem; color:#9ca3af;">Churn Probability</span>
-                <span style="font-weight:700; color:{color};">{pct}% — {label}</span>
+        <div style="background: #FFFFFF; border: 1px solid #E5E7E5; border-radius: 12px;
+                    padding: 1.25rem 1.4rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); margin-bottom: 1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+                <span style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#737373;">
+                    Predicted Churn Probability
+                </span>
+                <span style="font-size:0.85rem; font-weight:700; color:{color}; background:{bg};
+                             border:1px solid {border}; padding:0.25rem 0.65rem; border-radius:9999px;">
+                    {pct}% · {label}
+                </span>
             </div>
-            <div style="background:#2d3148; border-radius:6px; height:14px; overflow:hidden;">
-                <div style="width:{pct}%; background:{color}; height:100%; border-radius:6px;
+            <div style="background:#F3F4F6; border-radius:9999px; height:12px; overflow:hidden; border: 1px solid #E5E7E5;">
+                <div style="width:{pct}%; background:{color}; height:100%; border-radius:9999px;
                             transition: width 0.5s ease;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.74rem; color:#9CA3AF; margin-top:0.4rem;">
+                <span>0% (Secure)</span>
+                <span>30% (Medium Cutoff)</span>
+                <span>70% (High Cutoff)</span>
+                <span>100% (Imminent)</span>
             </div>
         </div>
         """,
@@ -154,12 +196,7 @@ def probability_gauge(prob: float) -> None:
 # ── Top features table ────────────────────────────────────────────────────────
 def top_features_table(features: list[dict]) -> None:
     """
-    Render inference top-feature contributions as a styled table.
-
-    Parameters
-    ----------
-    features : list of dicts with keys
-               feature, original_attribute, encoded_value, contribution_proxy
+    Render inference top-feature contributions as a clean styled dataframe.
     """
     import pandas as pd
 
@@ -170,38 +207,58 @@ def top_features_table(features: list[dict]) -> None:
     df = pd.DataFrame(features)[
         ["original_attribute", "feature", "encoded_value", "contribution_proxy"]
     ].rename(columns={
-        "original_attribute":  "Original Feature",
-        "feature":             "Encoded Column",
-        "encoded_value":       "Encoded Value",
-        "contribution_proxy":  "Contribution Proxy",
+        "original_attribute":  "Feature Domain",
+        "feature":             "Encoded Variable",
+        "encoded_value":       "Input Value",
+        "contribution_proxy":  "Relative Impact Proxy",
     })
     st.dataframe(
-        df.style.format({"Encoded Value": "{:.4f}", "Contribution Proxy": "{:.4f}"}),
+        df.style.format({"Input Value": "{:.4f}", "Relative Impact Proxy": "{:.4f}"}),
         use_container_width=True,
         hide_index=True,
     )
     st.caption(
-        "Contribution Proxy: coefficient × value (LR) or |feature value| (MLP). "
-        "These are lightweight approximations, not SHAP values."
+        "Relative Impact Proxy: coefficient × value (LR) or |encoded value| (MLP). "
+        "These are fast local heuristics for immediate inference display, not KernelExplainer SHAP values."
     )
 
 
 # ── Section divider ───────────────────────────────────────────────────────────
 def section_header(title: str, subtitle: str = "") -> None:
-    """Render a styled section header."""
-    st.markdown(f"### {title}")
-    if subtitle:
-        st.caption(subtitle)
-    st.divider()
+    """Render a styled section header with SaaS visual hierarchy."""
+    st.markdown(
+        f"""
+        <div class="section-header-wrap">
+            <div class="section-header-title">{title}</div>
+            {f'<div class="section-header-subtitle">{subtitle}</div>' if subtitle else ''}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 # ── Artifact status row ───────────────────────────────────────────────────────
 def artifact_status_row(label: str, path_exists: bool) -> None:
-    """Single row in an artifact status table."""
-    icon = "✅" if path_exists else "❌"
-    color = "#34d399" if path_exists else "#f87171"
+    """Single row in an artifact status telemetry table."""
+    icon = "✓" if path_exists else "✗"
+    status_text = "Verified" if path_exists else "Missing"
+    color = "#087A08" if path_exists else "#DC2626"
+    bg = "#E9FFE9" if path_exists else "#FEE2E2"
+    border = "#86EFAC" if path_exists else "#FCA5A5"
+
     st.markdown(
-        f'<div style="color:{color}; padding:0.15rem 0;">{icon} <code>{label}</code></div>',
+        f"""
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:0.6rem;
+                    padding:0.45rem 0.6rem; border-bottom:1px solid #F3F4F6;">
+            <code style="font-size:0.82rem; color:#171717; background:#F7F9F7;
+                         padding:0.25rem 0.55rem; border-radius:6px; border:1px solid #E5E7E5;
+                         overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:70%;">{label}</code>
+            <span style="font-size:0.75rem; font-weight:700; padding:0.25rem 0.65rem;
+                         border-radius:9999px; background:{bg}; color:{color}; border:1px solid {border};
+                         white-space:nowrap; flex-shrink:0;">
+                {icon} {status_text}
+            </span>
+        </div>
+        """,
         unsafe_allow_html=True,
     )
-

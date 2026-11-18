@@ -1,80 +1,531 @@
-/* ChurnIQ – Custom Streamlit Styles */
+/* ChurnIQ – Premium SaaS Streamlit Stylesheet (Lime-Inspired Theme)
+ * Colors:
+ *   - Primary Lime: #00DD00
+ *   - Surface White: #FFFFFF
+ *   - App Background: #F7F9F7
+ *   - Primary Text: #171717
+ *   - Secondary Text: #737373
+ *   - Borders: #E5E7E5
+ *   - Soft Lime Accent: #E9FFE9
+ *   - Dark Accessible Green: #087A08
+ */
 
-/* ── Page & header ─────────────────────────────────────────── */
-.main { background-color: #0e1117; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── Global App & Typography ───────────────────────────────── */
+html, body, [class*="css"], .stApp {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    color: #171717;
+    background-color: #F7F9F7 !important;
+}
+
+[data-testid="stAppViewContainer"] {
+    background-color: #F7F9F7 !important;
+}
+
+[data-testid="stHeader"] {
+    background-color: rgba(247, 249, 247, 0.9) !important;
+    backdrop-filter: blur(8px);
+}
+
+.main .block-container {
+    max-width: 1280px;
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+}
+
+/* ── Typography & Headings ─────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+    color: #171717 !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+}
 
 h1.churniq-title {
-    font-size: 2.4rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.2rem;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    color: #171717 !important;
+    margin-bottom: 0.25rem !important;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-/* ── Metric cards ───────────────────────────────────────────── */
-.metric-card {
-    background: linear-gradient(135deg, #1e2130 0%, #252940 100%);
-    border: 1px solid #3a3f5c;
-    border-radius: 12px;
-    padding: 1.2rem 1.4rem;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* ── Page Header Component ─────────────────────────────────── */
+.page-header-container {
+    background: #FFFFFF;
+    border: 1px solid #E5E7E5;
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
 }
-.metric-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+
+.page-header-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #00DD00;
 }
-.metric-card .metric-value {
-    font-size: 1.9rem;
+
+.page-header-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.74rem;
     font-weight: 700;
-    color: #667eea;
-}
-.metric-card .metric-label {
-    font-size: 0.78rem;
-    color: #9ca3af;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-top: 0.3rem;
+    color: #087A08;
+    background: #E9FFE9;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    margin-bottom: 0.6rem;
 }
-.metric-card .metric-delta {
+
+.page-header-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #171717;
+    margin: 0 0 0.4rem 0;
+    line-height: 1.25;
+}
+
+.page-header-desc {
+    font-size: 0.92rem;
+    color: #737373;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ── SaaS Card Container ───────────────────────────────────── */
+.saas-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7E5;
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.saas-card:hover {
+    border-color: #D1D5DB;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.saas-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #171717;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.saas-card-subtitle {
     font-size: 0.82rem;
+    color: #737373;
+    margin-bottom: 1rem;
+}
+
+/* ── Metric Cards ──────────────────────────────────────────── */
+.metric-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7E5;
+    border-radius: 12px;
+    padding: 1.25rem 1.35rem;
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    border-color: #00DD00;
+    box-shadow: 0 6px 16px rgba(0, 221, 0, 0.12);
+}
+
+.metric-card .metric-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #737373;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+}
+
+.metric-card .metric-value {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #171717;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.metric-card .metric-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 0.6rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    width: fit-content;
+}
+
+.metric-card .metric-delta.positive {
+    background-color: #E9FFE9;
+    color: #087A08;
+    border: 1px solid #BBF7D0;
+}
+
+.metric-card .metric-delta.negative {
+    background-color: #FEE2E2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+}
+
+/* ── Risk Badges ───────────────────────────────────────────── */
+.risk-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
+.risk-badge.High {
+    background-color: #FEE2E2;
+    color: #B91C1C;
+    border: 1px solid #F87171;
+}
+
+.risk-badge.Medium {
+    background-color: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #FBBF24;
+}
+
+.risk-badge.Low {
+    background-color: #E9FFE9;
+    color: #087A08;
+    border: 1px solid #86EFAC;
+}
+
+.risk-action-box {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.86rem;
+    line-height: 1.45;
+}
+.risk-action-box.High { background: #FEF2F2; color: #991B1B; border-left: 3px solid #DC2626; }
+.risk-action-box.Medium { background: #FFFBEB; color: #92400E; border-left: 3px solid #D97706; }
+.risk-action-box.Low { background: #F0FDF4; color: #166534; border-left: 3px solid #16A34A; }
+
+/* ── SHAP Disclaimer & Banners ─────────────────────────────── */
+.shap-disclaimer {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7E5;
+    border-left: 4px solid #00DD00;
+    padding: 0.9rem 1.25rem;
+    border-radius: 4px 10px 10px 4px;
+    font-size: 0.88rem;
+    color: #374151;
+    line-height: 1.55;
+    margin: 0.8rem 0 1.2rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.shap-disclaimer strong {
+    color: #087A08;
+}
+
+/* ── Section Dividers & Headers ────────────────────────────── */
+.section-header-wrap {
+    margin-top: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.section-header-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #171717;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-header-subtitle {
+    font-size: 0.86rem;
+    color: #737373;
+    margin-top: 0.25rem;
+    margin-bottom: 0.6rem;
+}
+
+hr {
+    border: none !important;
+    height: 1px !important;
+    background-color: #E5E7E5 !important;
+    margin: 1.8rem 0 !important;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background-color: #FFFFFF !important;
+    border-right: 1px solid #E5E7E5 !important;
+}
+
+[data-testid="stSidebar"] .block-container {
+    padding-top: 1.5rem !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+}
+
+.sidebar-brand-box {
+    background: #FFFFFF;
+    border: 1px solid #E5E7E5;
+    border-radius: 12px;
+    padding: 1.1rem 1rem;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-brand-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: #E9FFE9;
+    border: 1.5px solid #00DD00;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-brand-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #171717;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    background: #E9FFE9;
+    color: #087A08;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.sidebar-brand-sub {
+    font-size: 0.74rem;
+    color: #737373;
     margin-top: 0.4rem;
 }
-.metric-card .metric-delta.positive { color: #34d399; }
-.metric-card .metric-delta.negative { color: #f87171; }
 
-/* ── Risk badges ────────────────────────────────────────────── */
-.risk-badge {
-    display: inline-block;
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
+/* Style the sidebar radio buttons to look like clean navigation items */
+[data-testid="stSidebar"] [data-testid="stRadio"] > div {
+    gap: 0.35rem !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label > div:first-child {
+    display: none !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+    display: flex !important;
+    align-items: center !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+    padding: 0.65rem 0.95rem !important;
+    color: #4B5563 !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+    transition: all 0.15s ease-in-out !important;
+    cursor: pointer !important;
+    width: 100% !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+    background-color: #F7F9F7 !important;
+    color: #171717 !important;
+}
+
+/* Active navigation item styling */
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked),
+[data-testid="stSidebar"] [data-testid="stRadio"] div[aria-checked="true"] label,
+[data-testid="stSidebar"] [data-testid="stRadio"] label[data-checked="true"] {
+    background-color: #E9FFE9 !important;
+    color: #087A08 !important;
+    font-weight: 700 !important;
+    border-left: 4px solid #00DD00 !important;
+    box-shadow: 0 1px 2px rgba(0, 221, 0, 0.08) !important;
+}
+
+/* ── Buttons (Lime Primary) ────────────────────────────────── */
+.stButton > button,
+button[kind="primary"] {
+    background-color: #00DD00 !important;
+    color: #171717 !important;
+    font-weight: 700 !important;
+    font-size: 0.94rem !important;
+    border: 1px solid #00DD00 !important;
+    border-radius: 8px !important;
+    padding: 0.6rem 1.4rem !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(0, 221, 0, 0.25) !important;
+}
+
+.stButton > button:hover,
+button[kind="primary"]:hover {
+    background-color: #00C800 !important;
+    color: #000000 !important;
+    border-color: #00C800 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 221, 0, 0.35) !important;
+}
+
+.stButton > button:active {
+    transform: translateY(0);
+}
+
+/* ── Form Inputs & Selectboxes ─────────────────────────────── */
+.stTextInput > div > div > input,
+.stNumberInput > div > div > input,
+.stSelectbox > div > div,
+div[data-baseweb="select"] {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E5E7E5 !important;
+    border-radius: 8px !important;
+    color: #171717 !important;
+    font-size: 0.9rem !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus {
+    border-color: #00DD00 !important;
+    box-shadow: 0 0 0 2px rgba(0, 221, 0, 0.2) !important;
+}
+
+/* ── Expanders ─────────────────────────────────────────────── */
+.streamlit-expanderHeader {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E5E7E5 !important;
+    border-radius: 8px !important;
+    color: #171717 !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stExpander"] {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E5E7E5 !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+    margin-bottom: 0.9rem !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+/* ── Dataframes & Tables ───────────────────────────────────── */
+table.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E5E7E5;
+}
+
+table.compare-table th {
+    background-color: #F7F9F7;
+    color: #171717;
     font-weight: 700;
-    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #E5E7E5;
+    font-size: 0.85rem;
+    text-transform: uppercase;
     letter-spacing: 0.04em;
 }
-.risk-badge.High   { background: #3b1212; color: #f87171; border: 1.5px solid #f87171; }
-.risk-badge.Medium { background: #2d2412; color: #fbbf24; border: 1.5px solid #fbbf24; }
-.risk-badge.Low    { background: #0f2d1a; color: #34d399; border: 1.5px solid #34d399; }
 
-/* ── Info / warning banners ─────────────────────────────────── */
-.shap-disclaimer {
-    background: #1a1f35;
-    border-left: 4px solid #667eea;
+table.compare-table td {
     padding: 0.75rem 1rem;
-    border-radius: 0 8px 8px 0;
-    font-size: 0.84rem;
-    color: #9ca3af;
-    margin: 0.6rem 0 1rem;
+    color: #374151;
+    border-bottom: 1px solid #F3F4F6;
+    font-size: 0.88rem;
 }
 
-/* ── Comparison table tweaks ────────────────────────────────── */
-table.compare-table th {
-    background: #1e2130;
-    color: #667eea;
+table.compare-table tr:hover td {
+    background-color: #F9FAF9;
 }
-table.compare-table td { color: #e5e7eb; }
 
-/* ── Sidebar ────────────────────────────────────────────────── */
-.css-1d391kg { background-color: #131722 !important; }
+/* ── Tabs ──────────────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1rem;
+    border-bottom: 1px solid #E5E7E5 !important;
+    background-color: transparent !important;
+}
 
+.stTabs [data-baseweb="tab"] {
+    padding: 0.6rem 1rem !important;
+    font-weight: 600 !important;
+    color: #737373 !important;
+    border-bottom: 2px solid transparent !important;
+    background-color: transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: #087A08 !important;
+    border-bottom: 2.5px solid #00DD00 !important;
+    font-weight: 700 !important;
+}
+
+/* ── Progress Bars & Sliders ───────────────────────────────── */
+.stProgress > div > div > div > div {
+    background-color: #00DD00 !important;
+}
+
+.stProgress > div > div > div {
+    background-color: #E5E7E5 !important;
+    border-radius: 9999px !important;
+}
+
+/* ── Callout / Info boxes ──────────────────────────────────── */
+div[data-testid="stAlert"] {
+    border-radius: 10px !important;
+    border: 1px solid #E5E7E5 !important;
+}
+
+div[data-testid="stAlert"][data-test-color="info"] {
+    background-color: #F0FDF4 !important;
+    border-left: 4px solid #00DD00 !important;
+    color: #166534 !important;
+}
+
+/* ── Legacy compatibility classes ──────────────────────────── */
+.css-1d391kg { background-color: #FFFFFF !important; }
